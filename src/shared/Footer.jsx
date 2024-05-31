@@ -7,8 +7,8 @@ const Footer = () => {
 
        <div className='text-center lg:text-left'>
          <div className="hero " style={{backgroundImage: `url(${backgroundImg})` }}>
-            <div className="hero-overlay bg-blue-950 bg-opacity-80 "></div>     
-	        <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 text-white max-w-6xl">
+            <div className="hero-overlay bg-sky-950 bg-opacity-80 "></div>     
+	        <div className="flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 text-white max-w-5xl">
 		<div className="lg:w-1/3 space-y-5">
 			<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
 				<div className="items-center justify-center  rounded-full ">
