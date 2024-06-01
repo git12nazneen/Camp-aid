@@ -74,8 +74,6 @@ const Register = () => {
   console.log(watch("name"));
 
 
-
-
   return (
     <div className="max-w-6xl mx-auto  my-20">
        <PageTitle title='Register'></PageTitle>
