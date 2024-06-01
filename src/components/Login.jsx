@@ -6,11 +6,13 @@ import { getAuth } from "firebase/auth";
 import useAuth from "../hook/useAuth";
 import { app } from "../../firebase.config";
 import PageTitle from "./PageTitle";
+import UseAxiosPublic from "../hook/UseAxiosPublic";
 
 
 
 
 const Login = () => {
+  const axiosPublic = UseAxiosPublic()
  const {googleLogin, signIn}= useAuth()
  const auth = getAuth(app);
  const location = useLocation();
@@ -109,23 +111,19 @@ const {
 
 const handleSocialLogin = (socialProvider) => {
   socialProvider()
-    .then((result) => {
-      if (result.user) {
-        swal({
-          text: "Success fully login",
-          icon: "success",
-        });
-        navigate(location?.state ? location.state : "/");
-      }
-    })
-    .catch((error) => {
-      swal({
-        text: "Sign in failed!",
-        icon: "error",
+  .then((result) => {
+    console.log(result.user);
+    const userInfo = {
+      email: result.user?.email,
+      name: result.user?.displayName
+    };
+    axiosPublic.post('/users', userInfo)
+      .then(res => {
+        console.log(res.data);
+        navigate(location?.state ? location.state : '/');
+   
       });
-      console.error(error);
-      // setError(error.message)
-    });
+  });
 };
 
   return (

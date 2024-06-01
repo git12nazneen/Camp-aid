@@ -16,6 +16,7 @@ import Profile from '../components/Dashboard/Admin/Profile';
 import AddCamp from '../components/Dashboard/Admin/AddCamp';
 import ManageCamp from '../components/Dashboard/Admin/ManageCamp';
 import ManageRegCamp from '../components/Dashboard/Admin/ManageRegCamp';
+import AllUsers from '../components/Dashboard/Admin/AllUsers';
 
 const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
         {
           path:'manageRegisterCamp',
           element:<ManageRegCamp></ManageRegCamp>
+        },
+        {
+          path:'users',
+          element:<AllUsers></AllUsers>
         }
       ]
     }

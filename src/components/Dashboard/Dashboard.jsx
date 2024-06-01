@@ -29,9 +29,9 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/manageRegisterCamp">Manage Register camps</NavLink>
           </li>
-          {/* <li>
+          <li>
             <NavLink to="/dashboard/users">All Users</NavLink>
-          </li> */}
+          </li>
           
           {/* </> : <> */}
            <li>
