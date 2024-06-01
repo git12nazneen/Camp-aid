@@ -107,6 +107,27 @@ const {
 }
 
 
+const handleSocialLogin = (socialProvider) => {
+  socialProvider()
+    .then((result) => {
+      if (result.user) {
+        swal({
+          text: "Success fully login",
+          icon: "success",
+        });
+        navigate(location?.state ? location.state : "/");
+      }
+    })
+    .catch((error) => {
+      swal({
+        text: "Sign in failed!",
+        icon: "error",
+      });
+      console.error(error);
+      // setError(error.message)
+    });
+};
+
   return (
     <div className="pattern">
         <PageTitle title='Login'></PageTitle>

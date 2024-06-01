@@ -1,6 +1,8 @@
 
 import Banner from './Banner';
 import AboutHome from './AboutHome';
+import HoverDevCards from './HoverDevCards';
+
 
 
 const Home = () => {
@@ -8,6 +10,7 @@ const Home = () => {
         <div>
           <Banner></Banner>
           <AboutHome></AboutHome>
+          <HoverDevCards></HoverDevCards>
         </div>
     );
 };

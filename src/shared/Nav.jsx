@@ -1,13 +1,15 @@
-
-import { NavLink } from "react-router-dom";
-
-
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useState } from "react";
+import useAuth from "../hook/useAuth";
+import { AiOutlineMenu } from "react-icons/ai";
+import avatarImg from "../assets/avatar.png";
+import { FiSend } from "react-icons/fi";
 
 const Nav = () => {
-//   const { user, logOut } = useAuth();
-//   // console.log('nav,', user)
+  const { user, logOut } = useAuth();
+  console.log("nav,", user);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,52 +18,59 @@ const Nav = () => {
 
   // logout implement
 
-//   const handleSignOut = () => {
-//     logOut().then().catch();
-//     swal({
-//       text: "logout success",
-//       icon: "success",
-//     });
-//   };
+  const handleSignOut = () => {
+    logOut().then().catch();
+    swal({
+      text: "logout success",
+      icon: "success",
+    });
+  };
 
   const navLinks = (
     <>
-      <NavLink 
-        to="/" 
+      <NavLink
+        to="/"
         className={({ isActive }) =>
-          isActive ? 'text-red-600 border-b-2 border-red-600 font-bold' : 'my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0'
+          isActive
+            ? "text-blue-950 border-b-2 border-blue-950 font-bold"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
         Home
       </NavLink>
 
-      <NavLink 
-        to="/availableCamp" 
+      <NavLink
+        to="/availableCamp"
         className={({ isActive }) =>
-          isActive ? 'text-red-600 border-b-2 border-red-600 font-bold' : 'my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0'
+          isActive
+            ? "text-blue-950 border-b-2 border-blue-950 font-bold"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
         Available Camp
       </NavLink>
 
-      <NavLink 
-        to="/about" 
+      <NavLink
+        to="/about"
         className={({ isActive }) =>
-          isActive ? 'text-red-600 border-b-2 border-red-600 font-bold' : 'my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0'
+          isActive
+            ? "text-blue-950 border-b-2 border-blue-950 font-bold"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
         About us
       </NavLink>
 
-
-      <NavLink 
-        to="/joinUs" 
+      {/* <NavLink
+        to="/login"
         className={({ isActive }) =>
-          isActive ? 'text-red-600 border-b-2 border-red-600 font-bold' : 'my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0'
+          isActive
+            ? "text-blue-950 border-b-2 border-blue-950 font-bold"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
-       Join us
-      </NavLink>
+        Join us
+      </NavLink> */}
     </>
   );
   return (
@@ -122,39 +131,90 @@ const Nav = () => {
           >
             <div className="flex flex-col md:flex-row md:mx-6">{navLinks}</div>
             <div className="flex justify-center md:block">
-              {/* <div>
-              {user ? (
-                      <>
-                      <Link
-                      to='/dashboard'
-                      className='block  px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+            
+              <div className="relative">
+                <div className="flex flex-row items-center gap-3">
+                  {/* Become A Host btn */}
+                  <div className="hidden md:block">
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "text-blue-950 border-b-2 border-blue-950 font-bold"
+                          : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
+                      }
                     >
-                     Dashboard
-                    </Link>
-                        <div
-                          onClick={logOut}
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
-                        >
-                          Logout
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <Link
-                          to='/login'
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                        >
-                          Login
-                        </Link>
-                        <Link
-                          to='/signup'
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                        >
-                          Sign Up
-                        </Link>
-                      </>
-                    )}
-              </div> */}
+                      <button
+                        className={`
+                            px-4 py-2 rounded-full 
+                            flex items-center gap-2 
+                            text-slate-500
+                            shadow-[-5px_-5px_10px_rgba(255,_255,_255,_0.8),_5px_5px_10px_rgba(0,_0,_0,_0.25)]
+                            
+                            transition-all
+
+                            hover:shadow-[-1px_-1px_5px_rgba(255,_255,_255,_0.6),_1px_1px_5px_rgba(0,_0,_0,_0.3),inset_-2px_-2px_5px_rgba(255,_255,_255,_1),inset_2px_2px_4px_rgba(0,_0,_0,_0.3)]
+                            hover:text-violet-500
+                        `}
+                                          >
+                        <FiSend />
+                        <span>Join us</span>
+                      </button>
+                    </NavLink>
+                  </div>
+                  {/* Dropdown btn */}
+                  <div
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+                  >
+                    <AiOutlineMenu />
+                    <div className="hidden md:block">
+                      {/* Avatar */}
+                      <img
+                        className="rounded-full"
+                        referrerPolicy="no-referrer"
+                        src={user && user.photoURL ? user.photoURL : avatarImg}
+                        alt="profile"
+                        height="30"
+                        width="30"
+                      />
+                    </div>
+                  </div>
+                </div>
+                {isOpen && (
+                  <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
+                    <div className="flex flex-col cursor-pointer">
+                      <Link
+                        to="/"
+                        className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                      >
+                        Home
+                      </Link>
+
+                      {user ? (
+                        <>
+                          <div
+                            onClick={logOut}
+                            className="px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer"
+                          >
+                            Logout
+                          </div>
+                          <Link
+                            to="/dashboard"
+                            className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                          >
+                            Dashboard
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                         
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -164,6 +224,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-
-
