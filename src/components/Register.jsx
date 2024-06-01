@@ -6,85 +6,76 @@ import { IoEyeOutline } from "react-icons/io5";
 import swal from "sweetalert";
 import { getAuth } from "firebase/auth";
 import { app } from "../../firebase.config";
-
-
 import useAuth from "../hook/useAuth";
 import PageTitle from "./PageTitle";
+import UseAxiosPublic from "../hook/UseAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
-
-  // const {createUser,  updateUserProfile} = useContext(AuthContext)
+  const axiosPublic = UseAxiosPublic()
   const {createUser,  updateUserProfile}= useAuth()
   const auth = getAuth(app);
-  const [showPassword, setShowpassword] = useState(false);
-  const [ success , setSuccess ] = useState('')
-  const [loading, setLoading] = useState(true)
   const location = useLocation();
   const navigate = useNavigate();
   console.log('location in login', location)
+  const from = location.state?.from?.pathname || "/";
+  console.log("state in location", location.state);
+ 
 
   const {
     register,
     handleSubmit,
+    watch,
+    reset,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
-    const {email, password ,image, name} = data;
-        setLoading(true);
-        if(password.length < 6){
-            swal({
-                text: "Length must be at least 6 character",
-                icon: "error"
+    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Register success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          // create user entry in the db
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+                console.log('user added db')
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Updated profile successFully",
+                showConfirmButton: false,
+                timer: 1500,
               });
-            return;
-        }
-        if(!/[A-Z]/.test(password)){
-          
-            swal({
-                text: "Your password should have one uppercase character",
-                icon: "error"
-              });
-            return;
-        }
-        if(!/[a-z]/.test(password)){
-            
+              navigate(from, { replace: true });
+            }
+          });
+          console.log("user info update");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  };
 
-            swal({
-                text: "Your password should have one lowercase character",
-                icon: "error"
-              });
-            return;
-        }
-        // create user and update profile
-        createUser(email, password, image, name)
-        .then(result =>{
-            updateUserProfile(name, image)
-            .then( ()=>{
-                if(result.user){
-                    swal({
-                        text: "Success fully login",
-                        icon: "success"
-                      });
-                    navigate(location?.state ? location.state : '/');
-                }
-            })
-			
-		})
-        .catch(error => {
-            swal({
-                text: "Sign in failed!",
-                icon: "error"
-              });
-            console.error('Sign in error:', error);
-          })
-          
-            // reset error and success
-            setSuccess('');
-            // setError('');
-    }
-    
+  console.log(watch("name"));
+
+
+
+
   return (
     <div className="max-w-6xl mx-auto  my-20">
        <PageTitle title='Register'></PageTitle>
