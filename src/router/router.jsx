@@ -17,6 +17,7 @@ import AddCamp from '../components/Dashboard/Admin/AddCamp';
 import ManageCamp from '../components/Dashboard/Admin/ManageCamp';
 import ManageRegCamp from '../components/Dashboard/Admin/ManageRegCamp';
 import AllUsers from '../components/Dashboard/Admin/AllUsers';
+import PrivateRoute from '../provider/PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
     },
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>,
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
         // normal user route
         {

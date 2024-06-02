@@ -1,20 +1,21 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-// import useAdmin from "../hooks/useAdmin";
+import useAdmin from "../../hook/useAdmin";
+
 // import useCard from "../hooks/useCard";
 
 const Dashboard = () => {
 
   // TODO: get isAdmin value from the db
-//   const [isAdmin] = useAdmin();
+  const [isAdmin] = useAdmin();
 //   const [cart] = useCard()
 
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-sky-400">
         <ul className="menu">
-         {/* {
-          isAdmin? <> */}
+        {
+          isAdmin? <>
            <li>
             <NavLink to="/dashboard/profile">Profile</NavLink>
           </li>
@@ -33,7 +34,7 @@ const Dashboard = () => {
             <NavLink to="/dashboard/users">All Users</NavLink>
           </li>
           
-          {/* </> : <> */}
+         </> : <> 
            <li>
             <NavLink to="/dashboard/analytics">Analytics</NavLink>
           </li>
@@ -48,8 +49,8 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/paymentHistory">Real Payment History</NavLink>
           </li>
-          {/* </> */}
-         {/* } */}
+          </>
+        }
           {/* shared li */}
           <div className="divider"></div>
           <li>
