@@ -14,7 +14,7 @@ const AddCamp
   const axiosSecure = useAxiosSecure()
   const [loading, setLoading] = useState(false)
   const { user } = useAuth()
-
+  const [startDate, setStartDate] = useState(new Date());
 
   const { mutateAsync } = useMutation({
     mutationFn: async campData => {
@@ -41,7 +41,7 @@ const AddCamp
     const price = form.price.value
     const guests = form.total_participant.value
     const description = form.description.value
-    const startDate = e.startDate 
+    const date = new Date(form.date.value)
 
     // const host = {
     //   name: user?.displayName,
@@ -55,7 +55,7 @@ const AddCamp
         location,
         professional_name,
         campName,
-       startDate,
+        date,
         price,
         guests,
      
@@ -74,7 +74,9 @@ const AddCamp
     }
   }
 
- 
+  const handleDateChange = (date) => {
+    setStartDate(date)
+  }
 
   return (
     <>
@@ -84,14 +86,11 @@ const AddCamp
 
       {/* Form */}
       <AddCampFrom
-      Form
-        // dates={dates}
-        // handleDates={handleDates}
+         Form
         handleSubmit={handleSubmit}
-        // startDate={startDate} 
-      
-        handleImage={handleImage}
+        startDate={startDate}
         loading={loading}
+        handleDateChange={handleDateChange} 
       />
     </>
   )

@@ -5,17 +5,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { TbFidgetSpinner } from 'react-icons/tb'
 const AddCampFrom = ({
-//   dates,
-  // handleDates,
   handleSubmit,
-  // startDate,
-//   setImagePreview,
-//   imagePreview,
-//   imageText,
-//   handleImage,
+  startDate,
   loading,
+  handleDateChange
 }) => {
-    const [startDate, setStartDate] = useState(new Date());
+
   return (
     <div className='w-full p-20 min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
       <form onSubmit={handleSubmit}>
@@ -50,12 +45,17 @@ const AddCampFrom = ({
             </div>
 
             <div className='space-y-1'>
-              <label htmlFor='location' className='block text-gray-600'>
+              <label htmlFor='date' className='block text-gray-600'>
                 Select Date
               </label>
               {/* Calender */}
-              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-              
+              <DatePicker selected={startDate}  onChange={handleDateChange} />
+              <input
+            type="hidden"
+            name="date"
+            // value={startDate.toISOString()} // Convert the date to ISO string
+            value={`${startDate.toISOString().slice(0, 16)}:00`}
+          />
             </div>
           </div>
           <div className='space-y-6'>
@@ -157,4 +157,3 @@ export default AddCampFrom
 
 
 
-//   {new Date(rev.review.startDate).toLocaleDateString()}

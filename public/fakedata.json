@@ -1,203 +1,202 @@
 [
-    {
-      "camp_name": "Golden Health Camp",
-      "image": "image_url_A",
-      "camp_fees": 50,
-      "date_time": "2024-06-10T09:00:00",
-      "location": "Dhaka",
-      "healthcare_professional_name": "Dr. John Smith",
-      "participant_count": 0,
-      "description": "A well-known camp providing general health check-ups."
-    },
-    {
-      "camp_name": "Emerald Wellness Camp",
-      "image": "image_url_B",
-      "camp_fees": 30,
-      "date_time": "2024-07-15T10:00:00",
-      "location": "Chittagong",
-      "healthcare_professional_name": "Dr. Alice Johnson",
-      "participant_count": 0,
-      "description": "Renowned for its expert pediatric services."
-    },
-    {
-      "camp_name": "Royal Health Camp",
-      "image": "image_url_1",
-      "camp_fees": 20,
-      "date_time": "2024-06-20T08:00:00",
-      "location": "Khulna",
-      "healthcare_professional_name": "Dr. Emily Davis",
-      "participant_count": 0,
-      "description": "A local camp focusing on cardiovascular health."
-    },
-    {
-      "camp_name": "Jade Healing Camp",
-      "image": "image_url_2",
-      "camp_fees": 40,
-      "date_time": "2024-07-25T11:00:00",
-      "location": "Sylhet",
-      "healthcare_professional_name": "Dr. Michael Brown",
-      "participant_count": 0,
-      "description": "Specializes in diabetic care and management."
-    },
-    {
-      "camp_name": "Ruby Health Haven",
-      "image": "image_url_C",
-      "camp_fees": 60,
-      "date_time": "2024-08-05T09:30:00",
-      "location": "Rajshahi",
-      "healthcare_professional_name": "Dr. William Wilson",
-      "participant_count": 0,
-      "description": "Famous for its comprehensive women's health services."
-    },
-    {
-      "camp_name": "Diamond Wellness Retreat",
-      "image": "image_url_3",
-      "camp_fees": 25,
-      "date_time": "2024-06-30T10:30:00",
-      "location": "Barisal",
-      "healthcare_professional_name": "Dr. Sarah Lee",
-      "participant_count": 0,
-      "description": "Offers free dental check-ups and treatments."
-    },
-    {
-      "camp_name": "Pearl Health Oasis",
-      "image": "image_url_4",
-      "camp_fees": 35,
-      "date_time": "2024-07-10T08:30:00",
-      "location": "Rangpur",
-      "healthcare_professional_name": "Dr. Robert Martinez",
-      "participant_count": 0,
-      "description": "Focused on mental health and well-being."
-    },
-    {
-      "camp_name": "Famous Health Camp Sylhet",
-      "image": "image_url_D",
-      "camp_fees": 55,
-      "date_time": "2024-06-25T09:00:00",
-      "location": "Sylhet",
-      "healthcare_professional_name": "Dr. Linda White",
-      "participant_count": 0,
-      "description": "Renowned for its specialized cancer screening services."
-    },
-    {
-      "camp_name": "Opal Health Center",
-      "image": "image_url_5",
-      "camp_fees": 20,
-      "date_time": "2024-08-15T09:45:00",
-      "location": "Gazipur",
-      "healthcare_professional_name": "Dr. Thomas Clark",
-      "participant_count": 0,
-      "description": "Provides general health check-ups and vaccinations."
-    },
-    {
-      "camp_name": "Famous Wellness Camp Dhaka",
-      "image": "image_url_6",
-      "camp_fees": 45,
-      "date_time": "2024-09-10T10:00:00",
-      "location": "Dhaka",
-      "healthcare_professional_name": "Dr. Karen Hernandez",
-      "participant_count": 0,
-      "description": "Specializes in eye care and ophthalmology services."
-    },
-    {
-      "camp_name": "Topaz Health Hub",
-      "image": "image_url_E",
-      "camp_fees": 70,
-      "date_time": "2024-08-20T08:00:00",
-      "location": "Mymensingh",
-      "healthcare_professional_name": "Dr. James Walker",
-      "participant_count": 0,
-      "description": "A leading camp for orthopedic consultations."
-    },
-    {
-      "camp_name": "Famous Care Camp Chittagong",
-      "image": "image_url_7",
-      "camp_fees": 50,
-      "date_time": "2024-06-15T09:15:00",
-      "location": "Chittagong",
-      "healthcare_professional_name": "Dr. Patricia Hall",
-      "participant_count": 0,
-      "description": "Focused on nutrition and diet counseling."
-    },
-    {
-      "camp_name": "Garnet Healing Camp",
-      "image": "image_url_8",
-      "camp_fees": 60,
-      "date_time": "2024-07-20T10:45:00",
-      "location": "Narsingdi",
-      "healthcare_professional_name": "Dr. Christopher Young",
-      "participant_count": 0,
-      "description": "Provides free physical therapy sessions."
-    },
-    {
-      "camp_name": "Famous Medical Camp Rajshahi",
-      "image": "image_url_F",
-      "camp_fees": 75,
-      "date_time": "2024-09-01T08:30:00",
-      "location": "Rajshahi",
-      "healthcare_professional_name": "Dr. Barbara King",
-      "participant_count": 0,
-      "description": "Well-known for its expert cardiology services."
-    },
-    {
-      "camp_name": "Jasper Health Sanctuary",
-      "image": "image_url_9",
-      "camp_fees": 25,
-      "date_time": "2024-08-10T09:30:00",
-      "location": "Jessore",
-      "healthcare_professional_name": "Dr. Matthew Wright",
-      "participant_count": 0,
-      "description": "Offers free skin and dermatology consultations."
-    },
-    {
-      "camp_name": "Prestigious Health Retreat",
-      "image": "image_url_10",
-      "camp_fees": 55,
-      "date_time": "2024-07-05T10:15:00",
-      "location": "Tongi",
-      "healthcare_professional_name": "Dr. Nancy Lopez",
-      "participant_count": 0,
-      "description": "Focused on geriatric care and elderly health."
-    },
-    {
-      "camp_name": "Famous Healing Camp Barisal",
-      "image": "image_url_11",
-      "camp_fees": 35,
-      "date_time": "2024-06-18T08:15:00",
-      "location": "Barisal",
-      "healthcare_professional_name": "Dr. Kevin Harris",
-      "participant_count": 0,
-      "description": "Provides general health check-ups and emergency services."
-    },
-    {
-      "camp_name": "Moonstone Healing Center",
-      "image": "image_url_12",
-      "camp_fees": 45,
-      "date_time": "2024-07-30T09:45:00",
-      "location": "Dinajpur",
-      "healthcare_professional_name": "Dr. Sandra Lewis",
-      "participant_count": 0,
-      "description": "Specializes in maternal and child health services."
-    },
-    {
-      "camp_name": "Lapis Health Retreat",
-      "image": "image_url_13",
-      "camp_fees": 40,
-      "date_time": "2024-08-25T10:30:00",
-      "location": "Brahmanbaria",
-      "healthcare_professional_name": "Dr. Brian Robinson",
-      "participant_count": 0,
-      "description": "Offers free ENT (Ear, Nose, Throat) check-ups."
-    },
-    {
-      "camp_name": "Quartz Health Oasis",
-      "image": "image_url_14",
-      "camp_fees": 30,
-      "date_time": "2024-09-15T08:45:00",
-      "location": "Tangail",
-      "healthcare_professional_name": "Dr. Angela Walker",
-      "participant_count": 0,
-      "description": "Focused on respiratory health and asthma management."
-    }
-  ]
-  
+  {
+    "location": "Dhaka",
+    "professional_name": "Dr. John Smith",
+    "campName": "Golden Health Camp",
+    "date": "2024-06-10T09:00:00.000Z",
+    "price": 50,
+    "guests": 0,
+    "description": "A well-known camp providing general health check-ups.",
+    "image": "https://images.pexels.com/photos/7088498/pexels-photo-7088498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Chittagong",
+    "professional_name": "Dr. Alice Johnson",
+    "campName": "Emerald Wellness Camp",
+    "date": "2024-07-15T10:00:00.000Z",
+    "price": 30,
+    "guests": 0,
+    "description": "Renowned for its expert pediatric services.",
+    "image": "https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Khulna",
+    "professional_name": "Dr. Emily Davis",
+    "campName": "Royal Health Camp",
+    "date": "2024-06-20T08:00:00.000Z",
+    "price": 20,
+    "guests": 0,
+    "description": "A local camp focusing on cardiovascular health.",
+    "image": "https://images.pexels.com/photos/7089292/pexels-photo-7089292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Sylhet",
+    "professional_name": "Dr. Michael Brown",
+    "campName": "Jade Healing Camp",
+    "date": "2024-07-25T11:00:00.000Z",
+    "price": 40,
+    "guests": 0,
+    "description": "Specializes in diabetic care and management.",
+    "image": "https://images.pexels.com/photos/7089296/pexels-photo-7089296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Rajshahi",
+    "professional_name": "Dr. William Wilson",
+    "campName": "Ruby Health Haven",
+    "date": "2024-08-05T09:30:00.000Z",
+    "price": 60,
+    "guests": 0,
+    "description": "Famous for its comprehensive women's health services.",
+    "image": "https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Barisal",
+    "professional_name": "Dr. Sarah Lee",
+    "campName": "Diamond Wellness Retreat",
+    "date": "2024-06-30T10:30:00.000Z",
+    "price": 25,
+    "guests": 0,
+    "description": "Offers free dental check-ups and treatments.",
+    "image": "https://images.pexels.com/photos/3727715/pexels-photo-3727715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Rangpur",
+    "professional_name": "Dr. Robert Martinez",
+    "campName": "Pearl Health Oasis",
+    "date": "2024-07-10T08:30:00.000Z",
+    "price": 35,
+    "guests": 0,
+    "description": "Focused on mental health and well-being.",
+    "image": "https://images.pexels.com/photos/8454120/pexels-photo-8454120.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Sylhet",
+    "professional_name": "Dr. Linda White",
+    "campName": "Famous Health Camp Sylhet",
+    "date": "2024-06-25T09:00:00.000Z",
+    "price": 55,
+    "guests": 0,
+    "description": "Renowned for its specialized cancer screening services.",
+    "image": "https://images.pexels.com/photos/14706393/pexels-photo-14706393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Gazipur",
+    "professional_name": "Dr. Thomas Clark",
+    "campName": "Opal Health Center",
+    "date": "2024-08-15T09:45:00.000Z",
+    "price": 20,
+    "guests": 0,
+    "description": "Provides general health check-ups and vaccinations.",
+    "image": "https://images.pexels.com/photos/14394483/pexels-photo-14394483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Dhaka",
+    "professional_name": "Dr. Karen Hernandez",
+    "campName": "Famous Wellness Camp Dhaka",
+    "date": "2024-09-10T10:00:00.000Z",
+    "price": 45,
+    "guests": 0,
+    "description": "Specializes in eye care and ophthalmology services.",
+    "image": "https://images.pexels.com/photos/3869793/pexels-photo-3869793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Mymensingh",
+    "professional_name": "Dr. James Walker",
+    "campName": "Topaz Health Hub",
+    "date": "2024-08-20T08:00:00.000Z",
+    "price": 70,
+    "guests": 0,
+    "description": "A leading camp for orthopedic consultations.",
+    "image": "https://images.pexels.com/photos/16210267/pexels-photo-16210267/free-photo-of-vehicles-parked-on-grass-under-clouds.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Chittagong",
+    "professional_name": "Dr. Patricia Hall",
+    "campName": "Famous Care Camp Chittagong",
+    "date": "2024-06-15T09:15:00.000Z",
+    "price": 50,
+    "guests": 0,
+    "description": "Focused on nutrition and diet counseling.",
+    "image": "https://images.pexels.com/photos/9269367/pexels-photo-9269367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Narsingdi",
+    "professional_name": "Dr. Christopher Young",
+    "campName": "Garnet Healing Camp",
+    "date": "2024-07-20T10:45:00.000Z",
+    "price": 60,
+    "guests": 0,
+    "description": "Provides free physical therapy sessions.",
+    "image": "https://images.pexels.com/photos/12998098/pexels-photo-12998098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Rajshahi",
+    "professional_name": "Dr. Barbara King",
+    "campName": "Famous Medical Camp Rajshahi",
+    "date": "2024-09-01T08:30:00.000Z",
+    "price": 75,
+    "guests": 0,
+    "description": "Well-known for its expert cardiology services.",
+    "image": "https://images.pexels.com/photos/11391566/pexels-photo-11391566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Jessore",
+    "professional_name": "Dr. Matthew Wright",
+    "campName": "Jasper Health Sanctuary",
+    "date": "2024-08-10T09:30:00.000Z",
+    "price": 25,
+    "guests": 0,
+    "description": "Offers free skin and dermatology consultations.",
+    "image": "https://images.pexels.com/photos/11391566/pexels-photo-11391566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Tongi",
+    "professional_name": "Dr. Nancy Lopez",
+    "campName": "Prestigious Health Retreat",
+    "date": "2024-07-05T10:15:00.000Z",
+    "price": 55,
+    "guests": 0,
+    "description": "Focused on geriatric care and elderly health.",
+    "image": "https://images.pexels.com/photos/1309584/pexels-photo-1309584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Barisal",
+    "professional_name": "Dr. Kevin Harris",
+    "campName": "Famous Healing Camp Barisal",
+    "date": "2024-06-18T08:15:00.000Z",
+    "price": 35,
+    "guests": 0,
+    "description": "Provides general health check-ups and emergency services.",
+    "image": "https://images.pexels.com/photos/6877880/pexels-photo-6877880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Dinajpur",
+    "professional_name": "Dr. Sandra Lewis",
+    "campName": "Moonstone Healing Center",
+    "date": "2024-07-30T09:45:00.000Z",
+    "price": 45,
+    "guests": 0,
+    "description": "Specializes in maternal and child health services.",
+    "image": "https://images.pexels.com/photos/14452727/pexels-photo-14452727.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Brahmanbaria",
+    "professional_name": "Dr. Brian Robinson",
+    "campName": "Lapis Health Retreat",
+    "date": "2024-08-25T10:30:00.000Z",
+    "price": 40,
+    "guests": 0,
+    "description": "Offers free ENT (Ear, Nose, Throat) check-ups.",
+    "image": "https://images.pexels.com/photos/18556678/pexels-photo-18556678/free-photo-of-camper-van-on-a-road-among-trees.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "location": "Tangail",
+    "professional_name": "Dr. Angela Walker",
+    "campName": "Quartz Health Oasis",
+    "date": "2024-09-15T08:45:00.000Z",
+    "price": 30,
+    "guests": 0,
+    "description": "Focused on respiratory health and asthma management.",
+    "image": "https://images.pexels.com/photos/20432363/pexels-photo-20432363/free-photo-of-white-cars-on-a-field-in-a-mountain-valley.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }
+]
