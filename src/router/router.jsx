@@ -18,6 +18,8 @@ import ManageCamp from '../components/Dashboard/Admin/ManageCamp';
 import ManageRegCamp from '../components/Dashboard/Admin/ManageRegCamp';
 import AllUsers from '../components/Dashboard/Admin/AllUsers';
 import PrivateRoute from '../provider/PrivateRoute';
+import CampCard from '../AvailableCampPage/CampCard';
+import CampDetails from '../AvailableCampPage/CampDetails';
 
 const router = createBrowserRouter([
     {
@@ -34,6 +36,16 @@ const router = createBrowserRouter([
             path:'/availableCamp',
             element:<AvailableCampPage></AvailableCampPage>
         },
+        {
+          path: '/camps/:id',
+          element: <CampDetails />,
+        },
+      {
+        path:'/camps/:id',
+        element:<CampCard></CampCard>,
+        loader:({params})=>fetch(`http://localhost:5000/camps/${params.id}`)
+      }
+        ,
         {
             path:'/about',
             element:<About></About>
