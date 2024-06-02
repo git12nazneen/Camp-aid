@@ -43,7 +43,7 @@ const CampCard = ({ camp }) => {
             <div className="flex-1 "><p className="px-3 mt-3 mx-3 rounded-lg text-white py-2 bg-slate-600 font-light text-sm">Participate: {guests} </p></div>
         </div>
         <div className="flex mr-1 my-3">
-            <div className="flex-1"><p className="px-3 mx-3 rounded-lg py-2 bg-slate-300 font-light text-sm">Date :  {new Date(date).toLocaleDateString()} </p></div>
+            <div className="flex-1"><p className="px-3 mx-3 rounded-lg py-2 bg-slate-300 font-light text-sm">Date :  {new Date(date).toLocaleString()} </p></div>
            <div>
            <Link to={`/camps/${_id}`}>
                 <a className="btn btn-sm  btn-outline btn-info">Details</a>

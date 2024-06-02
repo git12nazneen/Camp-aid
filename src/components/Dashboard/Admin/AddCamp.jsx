@@ -42,15 +42,9 @@ const AddCamp
     const guests = form.total_participant.value
     const description = form.description.value
     const date = new Date(form.date.value)
+ 
+   try {
 
-    // const host = {
-    //   name: user?.displayName,
-    //   image: user?.photoURL,
-    //   email: user?.email,
-    // }
-
-    try {
-    //   const image_url = await imageUpload(image)
       const campData = {
         location,
         professional_name,
@@ -58,8 +52,6 @@ const AddCamp
         date,
         price,
         guests,
-     
-        // host,
         description,
         image,
       }

@@ -4,13 +4,6 @@ import CampCard from "./CampCard";
 
 const AvailableCampPage = () => {
 
-    // const [camps, setCamps] = useState([]);
-    // useEffect(() => {
-    //   fetch("http://localhost:5000/camps")
-    //     .then((res) => res.json())
-    //     .then((data) => console.log(data));
-    // }, []);
-  
 
     const { isLoading, error, data: camps } = useQuery({
         queryKey: ['camps'],

@@ -43,7 +43,7 @@ const Dashboard = () => {
           </li>
           <li>
             {/* <NavLink to="/dashboard/cart">My Cart({cart.length})</NavLink> */}
-            <NavLink to="/dashboard/registerCamp">RegisterCamps</NavLink>
+            <NavLink to="/dashboard/registerCamps">RegisterCamps</NavLink>
           </li>
           
           <li>

@@ -1,8 +1,11 @@
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../hook/useAuth";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosSecure from "../hook/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const CampDetails = () => {
   const { id } = useParams();
@@ -10,12 +13,10 @@ const CampDetails = () => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {user} = useAuth()
+  const navigate = useNavigate()
+  const axiosSecure = useAxiosSecure()
+  const [loading, setLoading] = useState(false)
 
-  // Mocked logged-in user info
-//   const loggedInUser = {
-//     name: "John Doe",
-//     email: "john.doe@example.com",
-//   };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,18 +41,42 @@ const CampDetails = () => {
 
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     defaultValues: {
-      emails: [""],
+     
     },
   });
 
-//   const { fields, append } = useFieldArray({
-//     control,
-//     name: "emails",
-//   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission
+  const { mutateAsync } = useMutation({
+    mutationFn: async campData => {
+      const { data } = await axiosSecure.post(`/participant`, campData)
+      return data
+    },
+    onSuccess: () => {
+      console.log('Data Saved Successfully')
+      toast.success('Camp Added Successfully!')
+      navigate('/dashboard/registerCamps')
+      setLoading(false)
+    },
+  })
+
+  const onSubmit = async (data) => {
+    const mergedData = {
+      ...data,
+      campName: details.campName,
+      price: details.price,
+      location: details.location,
+      professional_name: details.professional_name,
+      participantName: user?.displayName,
+      participantEmail: user?.email,
+    };
+    console.log(mergedData);
+
+    setLoading(true);
+    try {
+      await mutateAsync(mergedData);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   if (error) {
