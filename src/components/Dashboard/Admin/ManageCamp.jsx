@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ManageCamp = () => {
   const axiosSecure = useAxiosSecure();
@@ -34,7 +35,6 @@ const ManageCamp = () => {
           Swal.fire({
             position: "center",
             icon: "success",
-            // title: `${item.name} has been deleted!`,
             title: "Delete camp success",
             showConfirmButton: false,
             timer: 1500,
@@ -93,9 +93,13 @@ const ManageCamp = () => {
                       <FaTrash className="text-red-700" />
                   </button>
                 </th>
-                <th>  <button className="btn btn-xs">
+                <th>
+                   <Link to={`/dashboard/updateCamp/${item._id}`}>
+                   <button className="btn btn-xs">
                     <FaEdit className="text-sky-700" />
-                  </button></th>
+                  </button>
+                   </Link>
+                  </th>
               </tr>
             ))}
           </tbody>
