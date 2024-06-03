@@ -54,9 +54,7 @@ const Profile = () => {
                 <button className='bg-blue-400 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-blue-600 block mb-1'>
                   Update Profile
                 </button>
-                <button className='bg-blue-400 px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-blue-600'>
-                  Change Password
-                </button>
+                
               </div>
             </div>
           </div>
