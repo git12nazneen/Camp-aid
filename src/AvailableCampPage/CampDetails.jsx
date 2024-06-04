@@ -345,34 +345,6 @@ const CampDetails = () => {
     },
   });
 
-  // const { mutateAsync: updateGuestsCount } = useMutation({
-  //   mutationFn: async (id) => {
-  //     const response = await axios.put(`/camps/${id}`, { guests: 1 }, { // Include data in request body
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     return response.data;
-  //   },
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries(['campDetails', id]);
-  //   },
-  // });
-
-
-  // const handleParticipantJoin = async () => {
-  //   try {
-  //     await updateGuestsCount(id);
-  //     // Increase the participant count locally
-  //     setDetails((prevDetails) => ({
-  //       ...prevDetails,
-  //       guests: prevDetails.guests + 1,
-  //     }));
-  //   } catch (error) {
-  //     console.error('Error updating guests count:', error);
-  //   }
-  // };
-
     const updateParticipant = async () =>{
       fetch (`http://localhost:5000/camps/${id}`,{
         method:'PUT',
