@@ -35,18 +35,22 @@ const AuthProvider = ({children}) => {
     }
 
     // update user
-    const updateUserProfile = (name, image) =>{
-        return updateProfile(auth.createUser, {
-            displayName:name,
-            photoURL:image
-        }).then(() => {
-            // Profile updated!
-            // ...
-          }).catch((error) => {
-            // An error occurred
-            // ...
-          });
-    }
+  // update user
+const updateUserProfile = (name, image) => {
+    return updateProfile(auth.currentUser, { // corrected from auth.createUser to auth.currentUser
+        displayName: name,
+        photoURL: image
+    }).then(() => {
+        // Manually set the user with updated information
+        setUser({ ...auth.currentUser, displayName: name, photoURL: image });
+        // Profile updated!
+        // ...
+    }).catch((error) => {
+        // An error occurred
+        // ...
+        console.error("Error updating profile: ", error);
+    });
+}
 
     const logOut = () =>{
         return signOut(auth)

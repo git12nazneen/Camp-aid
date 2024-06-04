@@ -22,6 +22,7 @@ import CampCard from '../AvailableCampPage/CampCard';
 import CampDetails from '../AvailableCampPage/CampDetails';
 import AdminRoute from '../components/AdminRoute';
 import UpdateCamp from '../components/Dashboard/Admin/UpdateCamp';
+import UpdateProfile from '../components/Dashboard/UpdateProfile';
 
 const router = createBrowserRouter([
     {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
           path:'profile',
           element:<Profile></Profile>
         },
+       {
+        path:'updateProfile',
+        element:<UpdateProfile></UpdateProfile>
+       },
         {
           path:'addCamp',
           element:<AdminRoute><AddCamp></AddCamp></AdminRoute>

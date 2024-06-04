@@ -1,8 +1,8 @@
 
-
 import { Helmet } from 'react-helmet'
 import useAuth from '../../../hook/useAuth'
 import useAdmin from '../../../hook/useAdmin'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
   const { user, loading } = useAuth() || {}
@@ -11,6 +11,8 @@ const Profile = () => {
   console.log(user)
   if (isAdminLoading || loading) return <span className="loading loading-spinner loading-lg"></span>
 //   if ( loading) return <span className="loading loading-spinner loading-lg"></span>
+ 
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <Helmet>
@@ -51,9 +53,12 @@ const Profile = () => {
               </p>
 
               <div>
-                <button className='bg-blue-400 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-blue-600 block mb-1'>
+              <Link to='/dashboard/updateProfile'>
+              <button className='bg-blue-400 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-blue-600 block mb-1'>
                   Update Profile
                 </button>
+                 </Link>
+               
                 
               </div>
             </div>

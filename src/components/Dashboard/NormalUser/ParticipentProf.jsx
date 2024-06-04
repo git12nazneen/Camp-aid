@@ -3,6 +3,7 @@
 import { Helmet } from 'react-helmet'
 import useAuth from '../../../hook/useAuth'
 import useAdmin from '../../../hook/useAdmin'
+import { Link } from 'react-router-dom'
 
 
 const ParticipentProf = () => {
@@ -43,7 +44,7 @@ const ParticipentProf = () => {
               <p className='flex flex-col'>
                 Name
                 <span className='font-bold text-black '>
-                  {user?.displayName ? displayName : 'Username'}
+                  {user?.displayName }
                 </span>
               </p>
               <p className='flex flex-col'>
@@ -52,10 +53,11 @@ const ParticipentProf = () => {
               </p>
 
               <div>
+              <Link to='/dashboard/updateProfile'>
                 <button className='bg-blue-400 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-blue-600 block mb-1'>
                   Update Profile
                 </button>
-               
+               </Link>
               </div>
             </div>
           </div>
