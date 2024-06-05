@@ -23,6 +23,7 @@ import CampDetails from '../AvailableCampPage/CampDetails';
 import AdminRoute from '../components/AdminRoute';
 import UpdateCamp from '../components/Dashboard/Admin/UpdateCamp';
 import UpdateProfile from '../components/Dashboard/UpdateProfile';
+import Payment from '../components/Dashboard/NormalUser/Payment';
 
 const router = createBrowserRouter([
     {
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
           path:'analytics',
           element:<Analytics></Analytics>
         },
+       
         {
           path:'participentProfile',
           element:<ParticipentProf></ParticipentProf>
@@ -84,6 +86,11 @@ const router = createBrowserRouter([
         {
           path:'paymentHistory',
           element:<PaymentHistory></PaymentHistory>
+        },
+        {
+          path:'payment/:id',
+          element:<Payment></Payment>,
+          loader:({params})=>fetch(`http://localhost:5000/camps/${params.id}`)
         },
         // admin route 
         {
