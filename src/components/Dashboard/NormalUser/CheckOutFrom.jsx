@@ -71,7 +71,7 @@ const CheckOutFrom = ({paymentItem}) => {
         }}
       />
 
-        <button type="submit" disabled={!stripe || !clientSecret}>
+        <button type="submit" disabled={!stripe }>
             <button className='btn btn-primary mt-32'>Pay</button>
        </button>
         <p className='text-red-600'>{error}</p>

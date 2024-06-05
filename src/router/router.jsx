@@ -88,9 +88,9 @@ const router = createBrowserRouter([
           element:<PaymentHistory></PaymentHistory>
         },
         {
-          path:'payment/:id',
-          element:<Payment></Payment>,
-          loader:({params})=>fetch(`http://localhost:5000/camps/${params.id}`)
+          path: 'payment/:id',
+          element: <Payment />,
+          loader: ({ params }) => fetch(`http://localhost:5000/camps/${params.id}`).then(res => res.json())
         },
         // admin route 
         {
