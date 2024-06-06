@@ -10,6 +10,7 @@ import {
   AwesomeButtonSocial,
 } from "react-awesome-button";
 
+
 const Home = () => {
   return (
     <div>
@@ -23,6 +24,7 @@ const Home = () => {
         </Link>
       </div>
       <HoverDevCards></HoverDevCards>
+    
     </div>
   );
 };

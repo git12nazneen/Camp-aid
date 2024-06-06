@@ -14,15 +14,15 @@ const CheckOutFrom = ({paymentItem}) => {
   const axiosSecure = useAxiosSecure();
   const {price} = paymentItem;
   console.log('price', price)
-  // const axiosSecure = useAxiosSecure();
+  
 
-  // useEffect(()=>{
-  //   axiosSecure.post('/create-payment-intent', {price: parseInt(price)})
-  //   .then(res=>{
-  //     console.log(res.data.clientSecret)
-  //     setClientSecret(res.data.clientSecret)
-  //   })
-  // },[axiosSecure,price])
+  useEffect(()=>{
+    axiosSecure.post('/create-payment-intent', {price: parseInt(price)})
+    .then(res=>{
+      console.log(res.data.clientSecret)
+      setClientSecret(res.data.clientSecret)
+    })
+  },[axiosSecure,price])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -71,7 +71,7 @@ const CheckOutFrom = ({paymentItem}) => {
         }}
       />
 
-        <button type="submit" disabled={!stripe }>
+        <button type="submit" disabled={!stripe || !clientSecret}>
             <button className='btn btn-primary mt-32'>Pay</button>
        </button>
         <p className='text-red-600'>{error}</p>

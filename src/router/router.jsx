@@ -25,6 +25,7 @@ import UpdateCamp from '../components/Dashboard/Admin/UpdateCamp';
 import UpdateProfile from '../components/Dashboard/UpdateProfile';
 import Payment from '../components/Dashboard/NormalUser/Payment';
 
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -90,8 +91,10 @@ const router = createBrowserRouter([
         {
           path: 'payment/:id',
           element: <Payment />,
-          loader: ({ params }) => fetch(`http://localhost:5000/camps/${params.id}`).then(res => res.json())
+          loader: ({ params }) => fetch(`http://localhost:5000/participant/${params.id}`)
+  
         },
+
         // admin route 
         {
           path:'profile',

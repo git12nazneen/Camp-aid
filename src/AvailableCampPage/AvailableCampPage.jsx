@@ -1,66 +1,4 @@
-// import { useState, useEffect } from "react";
-// import { useQuery } from "@tanstack/react-query";
-// import CampCard from "./CampCard";
 
-// const AvailableCampPage = () => {
-//     const { isLoading, error, data: camps } = useQuery({
-//         queryKey: ['camps'],
-//         queryFn: async () => {
-//             const res = await fetch('http://localhost:5000/camps');
-//             return res.json();
-//         }
-//     });
-
-//     const [searchQuery, setSearchQuery] = useState('');
-//     const [searchResults, setSearchResults] = useState([]);
-//     const [isTwoColumns, setIsTwoColumns] = useState(false); // State to toggle between two and three columns
-
-//     useEffect(() => {
-//         if (camps && camps.length > 0) {
-//             // Filter camps based on search query
-//             const filteredCamps = camps.filter(camp =>
-//                 camp.campName.toLowerCase().includes(searchQuery.toLowerCase())
-//             );
-//             setSearchResults(filteredCamps);
-//         } else {
-//             setSearchResults([]);
-//         }
-//     }, [searchQuery, camps]);
-
-//     // Handler for changing the layout
-//     const toggleLayout = () => {
-//         setIsTwoColumns(!isTwoColumns);
-//     };
-
-//     if (isLoading) return <div>Loading...</div>;
-//     if (error) return <div>Error: {error.message}</div>;
-
-//     return (
-//         <div className="mx-10 mt-32 mb-10">
-//             <input
-//                 type="text"
-//                 placeholder="Search camps by name"
-//                 value={searchQuery}
-//                 onChange={(e) => setSearchQuery(e.target.value)}
-//                 className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-//             />
-//             {/* Layout toggle button */}
-//             <button onClick={toggleLayout} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-//                 {isTwoColumns ? "Switch to Three Columns" : "Switch to Two Columns"}
-//             </button>
-//             <div className={`grid ${isTwoColumns ? 'grid-cols-2' : 'grid-cols-3'} gap-5 mt-4`}>
-//                 {searchResults.map((camp) => (
-//                     <CampCard
-//                         key={camp._id}
-//                         camp={camp}
-//                     ></CampCard>
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default AvailableCampPage;
 
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -81,8 +19,8 @@ const AvailableCampPage = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [isTwoColumns, setIsTwoColumns] = useState(false); // State to toggle between two and three columns
-  const [sortCriteria, setSortCriteria] = useState("alphabetical"); // State to track the sorting criteria
+  const [isTwoColumns, setIsTwoColumns] = useState(false); 
+  const [sortCriteria, setSortCriteria] = useState("alphabetical"); 
 
   useEffect(() => {
     if (camps && camps.length > 0) {

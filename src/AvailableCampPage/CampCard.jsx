@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const CampCard = ({ camp }) => {
   const {
-    location = '',
+    // location = '',
+    // professional_name,
     professional_name,
     campName,
     date,
