@@ -3,11 +3,14 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../../hook/useAuth';
 
 
 const CheckOutFrom = ({paymentItem}) => {
+  const {user} = useAuth();
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('')
+  const [transactionId, setTransactionId] = useState('')
   const stripe = useStripe();
   const elements = useElements();
 
@@ -49,6 +52,27 @@ const CheckOutFrom = ({paymentItem}) => {
         console.log('Payment method', paymentMethod)
         setError('')
       }
+
+      // confirm payment
+      const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(clientSecret, {
+        payment_method:{
+          card: card,
+          billing_details:{
+            email: user?.email || 'anonymous',
+            name: user?.displayName || 'anonymous',
+          }
+        }
+      })
+      if(confirmError){
+        console.log('confirm error showing')
+      }
+      else{
+        console.log('payment intent', paymentIntent)
+        if(paymentIntent.status === 'succeeded'){
+          console.log('transaction id', paymentIntent.id);
+          setTransactionId(paymentIntent.id);
+        }
+      }
     
   };
 
@@ -75,6 +99,7 @@ const CheckOutFrom = ({paymentItem}) => {
             <button className='btn btn-primary mt-32'>Pay</button>
        </button>
         <p className='text-red-600'>{error}</p>
+       {transactionId && <p className='text-green-600'>Your transaction id : {transactionId}</p>}
     </form>
   );
 };
