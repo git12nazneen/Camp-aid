@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hook/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 
 const CheckOutFrom = ({paymentItem}) => {
@@ -13,6 +14,7 @@ const CheckOutFrom = ({paymentItem}) => {
   const [transactionId, setTransactionId] = useState('')
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate()
 
   const axiosSecure = useAxiosSecure();
   const {price,camp_id} = paymentItem;
@@ -87,7 +89,7 @@ const CheckOutFrom = ({paymentItem}) => {
 
           const res = await axiosSecure.post('/payments', payments);
           console.log('Payment saved' ,res)
-
+         
         }
       }
     
@@ -122,3 +124,4 @@ const CheckOutFrom = ({paymentItem}) => {
 };
 
 export default CheckOutFrom;
+

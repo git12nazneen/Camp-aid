@@ -26,6 +26,7 @@ const PaymentHistory = () => {
                 <th>Participate Name</th>
                 <th>Camp Name</th>
                 <th>Date</th>
+                <th>Camp Fees</th>
                 <th>Payment Status</th>
                 <th>Confirm Status</th>
                 <th>Cancel</th>
@@ -38,6 +39,7 @@ const PaymentHistory = () => {
                   <tr key={item._id}>
                     <th>{idx + 1}</th>
                     <th>{item.name}</th>
+                    <th>{item.name}</th>
                     <td>
                       <div className="flex items-center gap-3">
                        
@@ -46,15 +48,12 @@ const PaymentHistory = () => {
                         
                       </div>
                     </td>
+                    <td><h1>{item.price}</h1></td>
                     <td><h1>{item.status}</h1></td>
                     <td>
                       {item.confirm}
                     </td>
-                    <th>
-                      <button className="btn btn-xs">
-                        <FaEdit className="text-red-700" />
-                      </button>
-                    </th>
+                    
                     <th>
                       <FaTrash className="text-red-700" />
                     </th>
