@@ -15,7 +15,7 @@ const CheckOutFrom = ({paymentItem}) => {
   const elements = useElements();
 
   const axiosSecure = useAxiosSecure();
-  const {price} = paymentItem;
+  const {price,camp_id} = paymentItem;
   console.log('price', price)
   
 
@@ -71,6 +71,22 @@ const CheckOutFrom = ({paymentItem}) => {
         if(paymentIntent.status === 'succeeded'){
           console.log('transaction id', paymentIntent.id);
           setTransactionId(paymentIntent.id);
+
+          // now save the payment history
+          const payments ={
+            email : user.email,
+            price: price,
+            transactionId:paymentIntent.id,
+            date: new Date(),
+            status:'Paid',
+            confirm:'Confirm',
+            itemIds: camp_id
+            // campId:camps.map(camp=>camp.camp_id)
+          }
+
+          const res = await axiosSecure.post('/payments', payments);
+          console.log('Payment saved' ,res)
+
         }
       }
     
