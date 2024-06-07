@@ -75,13 +75,14 @@ const CheckOutFrom = ({paymentItem}) => {
           // now save the payment history
           const payments ={
             email : user.email,
+            name: user.displayName,
             price: price,
             transactionId:paymentIntent.id,
             date: new Date(),
             status:'Paid',
             confirm:'Confirm',
             itemIds: camp_id
-            // campId:camps.map(camp=>camp.camp_id)
+          
           }
 
           const res = await axiosSecure.post('/payments', payments);
