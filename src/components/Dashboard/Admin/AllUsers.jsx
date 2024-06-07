@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { MdAdminPanelSettings } from "react-icons/md";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
+import { useState } from 'react';
 
 const AllUsers = () => {
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(10); // Number of items per page
     const axiosSecure = useAxiosSecure()
     const {data : users = [] , refetch} = useQuery({
         queryKey:['users'],
@@ -57,6 +59,17 @@ const AllUsers = () => {
       };
     
 
+ // Calculate total number of pages
+ const totalPages = Math.ceil(users.length / perPage);
+
+ // Function to handle page change
+ const handlePageChange = (pageNumber) => {
+   setCurrentPage(pageNumber);
+ };
+
+ // Calculate the index range for current page
+ const startIndex = (currentPage - 1) * perPage;
+ const endIndex = startIndex + perPage;
 
 
     return (
@@ -87,9 +100,9 @@ const AllUsers = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {users.map((user, index) => (
+                {users.slice(startIndex, endIndex).map((user, idx) => (
                   <tr key={user._id}>
-                    <th>{index + 1}</th>
+                      <td>{startIndex + idx + 1}</td>
     
                     <td>
                       <div className="flex items-center gap-3">
@@ -126,7 +139,39 @@ const AllUsers = () => {
                   </tr>
                 ))}
               </tbody>
-              {/* foot */}
+              <tfoot>
+              <tr>
+                <td colSpan="8" className="text-center  py-10">
+                  <div className="pagination">
+                    {Array.from({ length: totalPages }).map((_, index) => (
+               
+
+                    <button
+                    key={index}
+                    onClick={() => handlePageChange(index + 1)}
+                    className={`pagination-item ${
+                      currentPage === index + 1 ? "active" : ""
+                    }`}
+                    style={{
+                   
+                      padding: "8px 12px",
+                      margin: "0 4px",
+                      border: "1px solid #ccc",
+                      backgroundColor: currentPage === index + 1 ? "blue" : "transparent",
+                      color: currentPage === index + 1 ? "#fff" : "#333",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {index + 1}
+                  </button>
+                  
+
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
             </table>
           </div>
         </div>

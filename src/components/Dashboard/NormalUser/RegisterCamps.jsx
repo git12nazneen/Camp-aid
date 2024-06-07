@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { FaEdit, FaTrash } from 'react-icons/fa';
@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 const RegisterCamps = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(10); // Number of items per page
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['participants'],
@@ -34,6 +36,22 @@ const RegisterCamps = () => {
   // Filter participants by logged-in user's email
   const participants = data.filter(item => item.participantEmail === user?.email);
 
+
+ // Calculate total number of pages
+ const totalPages = Math.ceil(participants.length / perPage);
+
+ // Function to handle page change
+ const handlePageChange = (pageNumber) => {
+   setCurrentPage(pageNumber);
+ };
+
+ // Calculate the index range for current page
+ const startIndex = (currentPage - 1) * perPage;
+ const endIndex = startIndex + perPage;
+
+
+
+
   return (
     <div className='max-w-5xl mx-auto'>
       <h2 className='text-center my-10 font-bold text-2xl mx-auto '>Participant Register Camps</h2>
@@ -53,9 +71,9 @@ const RegisterCamps = () => {
           </thead>
           <tbody>
             {participants.length > 0 ? (
-              participants.map((item, idx) => (
+              participants.slice(startIndex, endIndex).map((item, idx) => (
                 <tr key={item._id}>
-                  <th>{idx + 1}</th>
+                   <td>{startIndex + idx + 1}</td>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
@@ -89,6 +107,39 @@ const RegisterCamps = () => {
               </tr>
             )}
           </tbody>
+          <tfoot>
+              <tr>
+                <td colSpan="8" className="text-center  py-10">
+                  <div className="pagination">
+                    {Array.from({ length: totalPages }).map((_, index) => (
+               
+
+                    <button
+                    key={index}
+                    onClick={() => handlePageChange(index + 1)}
+                    className={`pagination-item ${
+                      currentPage === index + 1 ? "active" : ""
+                    }`}
+                    style={{
+                   
+                      padding: "8px 12px",
+                      margin: "0 4px",
+                      border: "1px solid #ccc",
+                      backgroundColor: currentPage === index + 1 ? "blue" : "transparent",
+                      color: currentPage === index + 1 ? "#fff" : "#333",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {index + 1}
+                  </button>
+                  
+
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
         </table>
       </div>
     </div>
