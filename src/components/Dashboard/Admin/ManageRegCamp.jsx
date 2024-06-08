@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAuth from "../../../hook/useAuth";
@@ -18,14 +15,14 @@ const ManageRegCamp = () => {
   const { data: participants = [], refetch } = useQuery({
     queryKey: ["participants"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/payments");
+      const res = await axiosSecure.get("/participant");
       return res.data;
     },
   });
 
   const confirmMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await axiosSecure.patch(`/payments/${id}`);
+      const res = await axiosSecure.patch(`/participant/${id}`);
       return res.data;
     },
     onSuccess: () => {
@@ -40,7 +37,10 @@ const ManageRegCamp = () => {
       });
     },
     onError: (error) => {
-      console.error("Error confirming status:", error.response?.data || error.message);
+      console.error(
+        "Error confirming status:",
+        error.response?.data || error.message
+      );
       Swal.fire({
         position: "top-end",
         icon: "error",
@@ -64,8 +64,6 @@ const ManageRegCamp = () => {
 
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
-
-
 
   return (
     <div>
@@ -91,7 +89,7 @@ const ManageRegCamp = () => {
                 participants.slice(startIndex, endIndex).map((item, idx) => (
                   <tr key={item._id}>
                     <td>{startIndex + idx + 1}</td>
-                    <td>{item.name}</td>
+                    <td>{item.participantName}</td>
                     <td>{item.campName}</td>
                     <td>{item.price} $</td>
                     <td>
@@ -156,9 +154,6 @@ const ManageRegCamp = () => {
       </div>
     </div>
   );
-
-
-
 };
 
 export default ManageRegCamp;

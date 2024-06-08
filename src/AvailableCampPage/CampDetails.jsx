@@ -349,6 +349,25 @@ const CampDetails = () => {
                   )}
                 </div>
 
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700">
+                   Confirm status
+                  </label>
+                  <select
+                    {...register("confirm", { required: "Confirm is required" })}
+                    className="block w-full px-4 py-3 text-sm border border-gray-200 rounded-md"
+                  >
+                    <option value="">Select </option>
+                    <option value="Pending">Pending</option>
+                  
+                  </select>
+                  {errors.confirm && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.confirm.message}
+                    </p>
+                  )}
+                </div>
+                
                 <button
                   type="submit"
                   className="mt-4 w-full px-4 py-2 text-sm text-white bg-blue-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"

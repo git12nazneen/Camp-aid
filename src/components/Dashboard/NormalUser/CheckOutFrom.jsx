@@ -5,6 +5,7 @@ import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hook/useAuth';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 const CheckOutFrom = ({paymentItem}) => {
@@ -15,9 +16,10 @@ const CheckOutFrom = ({paymentItem}) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate()
-
+  const [loading, setLoading] = useState(false);
   const axiosSecure = useAxiosSecure();
-  const {price,camp_id, campName} = paymentItem;
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
+  const {price,camp_id, campName, confirm} = paymentItem;
   console.log('price', price)
   
 
@@ -31,7 +33,7 @@ const CheckOutFrom = ({paymentItem}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoading(true); 
     if (!stripe || !elements) {
       // handle error
       return;
@@ -83,14 +85,17 @@ const CheckOutFrom = ({paymentItem}) => {
             transactionId:paymentIntent.id,
             date: new Date(),
             status:'Paid',
-            confirm:'Pending',
+            confirm:confirm,
             itemIds: camp_id
           
           }
 
           const res = await axiosSecure.post('/payments', payments);
           console.log('Payment saved' ,res)
-         
+          toast.success('Payment saved')
+          setPaymentCompleted(true);
+          navigate("/dashboard/paymentHistory");
+           setLoading(false);
         }
       }
     
@@ -115,9 +120,19 @@ const CheckOutFrom = ({paymentItem}) => {
         }}
       />
 
-        <button type="submit" disabled={!stripe || !clientSecret}>
-            <button className='btn btn-primary mt-32'>Pay</button>
-       </button>
+        {/* <button type="submit" disabled={!stripe || !clientSecret || paymentCompleted}>
+          {paymentCompleted?  <button className='btn btn-primary mt-32'>Pay</button> : 'Paid'}
+            {/* <button className='btn btn-primary mt-32'>Pay</button> */}
+       {/* </button> */} 
+       <button 
+      type="submit" 
+      disabled={!stripe || !clientSecret || paymentCompleted} 
+      className='btn btn-primary mt-32'
+    >
+      {paymentCompleted ? 'Paid' : 'Pay'}
+    </button>
+
+         
         <p className='text-red-600'>{error}</p>
        {transactionId && <p className='text-green-600'>Your transaction id : {transactionId}</p>}
     </form>
