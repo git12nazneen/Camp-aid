@@ -9,6 +9,7 @@ const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(10); // Number of items per page
+  const [searchQuery, setSearchQuery] = useState(''); // Search query state
 
   const { data: payments = [] } = useQuery({
     queryKey: ["payments", user.email],
@@ -18,8 +19,21 @@ const PaymentHistory = () => {
     },
   });
 
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1); // Reset to the first page on search
+  };
+  
+  const filteredData = payments.filter((item) =>
+    item.campName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    new Date(item.date).toLocaleString().toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.professional_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  
+
   // Calculate total number of pages
-  const totalPages = Math.ceil(payments.length / perPage);
+  const totalPages = Math.ceil(filteredData.length / perPage);
 
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
@@ -33,8 +47,28 @@ const PaymentHistory = () => {
   return (
     <div className="max-w-5xl mx-auto">
       <h2 className="text-center my-10 font-bold text-2xl mx-auto ">
-        Participant Pay Camps {payments.length}
+        Participant Pay Camps {filteredData.length}
       </h2>
+      <div className="mx-20 flex">
+        <div>
+          <h1 className="bg-black text-white text-center px-5 py-3">Search</h1>
+        </div>
+  <input
+    type="text"
+    placeholder="Search by Camp Name, Date, or Healthcare Professional"
+    value={searchQuery}
+    onChange={handleSearch}
+    className="search-input"
+    style={{
+      width: "100%",
+      padding: "10px",
+      marginBottom: "20px",
+      borderRadius: "4px",
+      border: "1px solid #ccc"
+    }}
+  />
+</div>
+
       <div className="mx-20">
         <table className="table my-4">
           <thead className="bg-sky-400 py-3 text-white uppercase">
@@ -50,8 +84,8 @@ const PaymentHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {payments.length > 0 ? (
-              payments.slice(startIndex, endIndex).map((item, idx) => (
+            {filteredData.length > 0 ? (
+              filteredData.slice(startIndex, endIndex).map((item, idx) => (
                 <tr key={item._id}>
                   <td>{startIndex + idx + 1}</td>
                   <th>{item.name}</th>

@@ -11,9 +11,11 @@ const ManageRegCamp = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(10);
   const queryClient = useQueryClient();
+  const [searchQuery, setSearchQuery] = useState(''); // Search query state
 
-  const { data: participants = [], refetch } = useQuery({
-    queryKey: ["participants"],
+
+  const { data: filteredData = [], refetch } = useQuery({
+    queryKey: ["filteredData"],
     queryFn: async () => {
       const res = await axiosSecure.get("/participant");
       return res.data;
@@ -26,7 +28,7 @@ const ManageRegCamp = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["participants"]);
+      queryClient.invalidateQueries(["filteredData"]);
       refetch();
       Swal.fire({
         position: "top-end",
@@ -56,7 +58,19 @@ const ManageRegCamp = () => {
     confirmMutation.mutate(id);
   };
 
-  const totalPages = Math.ceil(participants.length / perPage);
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1); // Reset to the first page on search
+  };
+  
+  const filteresData = filteredData.filter((item) =>
+    item.campName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    new Date(item.date).toLocaleString().toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.professional_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  
+
+  const totalPages = Math.ceil(filteresData.length / perPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -69,8 +83,28 @@ const ManageRegCamp = () => {
     <div>
       <div className="max-w-5xl mx-auto">
         <h2 className="text-center my-10 font-bold text-2xl mx-auto">
-          Participant Pay Camps {participants.length}
+          Participant Pay Camps {filteresData.length}
         </h2>
+        <div className="mx-20 flex">
+        <div>
+          <h1 className="bg-black text-white text-center px-5 py-3">Search</h1>
+        </div>
+  <input
+    type="text"
+    placeholder="Search by Camp Name, Date, or Healthcare Professional"
+    value={searchQuery}
+    onChange={handleSearch}
+    className="search-input"
+    style={{
+      width: "100%",
+      padding: "10px",
+      marginBottom: "20px",
+      borderRadius: "4px",
+      border: "1px solid #ccc"
+    }}
+  />
+</div>
+
         <div className="mx-20">
           <table className="table my-4">
             <thead className="bg-sky-400 py-3 text-white uppercase">
@@ -85,8 +119,8 @@ const ManageRegCamp = () => {
               </tr>
             </thead>
             <tbody>
-              {participants.length > 0 ? (
-                participants.slice(startIndex, endIndex).map((item, idx) => (
+              {filteresData.length > 0 ? (
+                filteresData.slice(startIndex, endIndex).map((item, idx) => (
                   <tr key={item._id}>
                     <td>{startIndex + idx + 1}</td>
                     <td>{item.participantName}</td>

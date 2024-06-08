@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const RegisterCamps = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-
+  const [searchQuery, setSearchQuery] = useState(''); // Search query state
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(10); // Number of items per page
 
@@ -25,10 +25,6 @@ const RegisterCamps = () => {
     },
   });
 
-
-
-  
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -42,8 +38,21 @@ const RegisterCamps = () => {
     (item) => item.participantEmail === user?.email
   );
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1); // Reset to the first page on search
+  };
+  
+  const filteredData = participants.filter((item) =>
+    item.campName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  
+
+
+
+
   // Calculate total number of pages
-  const totalPages = Math.ceil(participants.length / perPage);
+  const totalPages = Math.ceil(filteredData.length / perPage);
 
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
@@ -59,6 +68,26 @@ const RegisterCamps = () => {
       <h2 className="text-center my-10 font-bold text-2xl mx-auto ">
         Participant Register Camps
       </h2>
+      <div className="mx-20 flex">
+        <div>
+          <h1 className="bg-black text-white text-center px-5 py-3">Search</h1>
+        </div>
+  <input
+    type="text"
+    placeholder="Search by Camp Name, Date, or Healthcare Professional"
+    value={searchQuery}
+    onChange={handleSearch}
+    className="search-input"
+    style={{
+      width: "100%",
+      padding: "10px",
+      marginBottom: "20px",
+      borderRadius: "4px",
+      border: "1px solid #ccc"
+    }}
+  />
+</div>
+
       <div className="mx-20">
         <table className="table my-4">
           <thead className="bg-sky-400 py-3 text-white uppercase">
@@ -74,8 +103,8 @@ const RegisterCamps = () => {
             </tr>
           </thead>
           <tbody>
-            {participants.length > 0 ? (
-              participants.slice(startIndex, endIndex).map((item, idx) => (
+            {filteredData.length > 0 ? (
+             filteredData.slice(startIndex, endIndex).map((item, idx) => (
                 <tr key={item._id}>
                   <td>{startIndex + idx + 1}</td>
                   <td>
