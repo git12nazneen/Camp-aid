@@ -17,7 +17,7 @@ const CheckOutFrom = ({paymentItem}) => {
   const navigate = useNavigate()
 
   const axiosSecure = useAxiosSecure();
-  const {price,camp_id} = paymentItem;
+  const {price,camp_id, campName} = paymentItem;
   console.log('price', price)
   
 
@@ -79,10 +79,11 @@ const CheckOutFrom = ({paymentItem}) => {
             email : user.email,
             name: user.displayName,
             price: price,
+            campName:campName,
             transactionId:paymentIntent.id,
             date: new Date(),
             status:'Paid',
-            confirm:'Confirm',
+            confirm:'Pending',
             itemIds: camp_id
           
           }

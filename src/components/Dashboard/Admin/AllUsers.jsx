@@ -5,9 +5,11 @@ import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useState } from 'react';
 
 const AllUsers = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(10); // Number of items per page
-    const axiosSecure = useAxiosSecure()
+      const [currentPage, setCurrentPage] = useState(1);
+      const [perPage] = useState(10); // Number of items per page
+      const axiosSecure = useAxiosSecure()
+
+
     const {data : users = [] , refetch} = useQuery({
         queryKey:['users'],
         queryFn: async()=>{

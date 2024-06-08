@@ -76,14 +76,13 @@ const RegisterCamps = () => {
                    <td>{startIndex + idx + 1}</td>
                   <td>
                     <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask w-12 h-12">
+                    
                           {item.participantName}
                         </div>
-                      </div>
-                    </div>
+                      
                   </td>
                   <td><h1>{item.campName}</h1></td>
+                  <td>{item.price}</td>
                   <td>
                     <Link to={`/dashboard/payment/${item._id}`}>
                       <button className="btn bg-sky-500 btn-outline">Pay</button>
@@ -97,7 +96,7 @@ const RegisterCamps = () => {
                   <th>
                     <FaTrash className="text-red-700" />
                   </th>
-                  <th>*</th>
+                
                   <th>Give review</th>
                 </tr>
               ))
