@@ -1,8 +1,10 @@
 
+
+
 import React, { useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAuth from "../../../hook/useAuth";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
@@ -10,7 +12,7 @@ const ManageRegCamp = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(10); // Number of items per page
+  const [perPage] = useState(10);
   const queryClient = useQueryClient();
 
   const { data: participants = [], refetch } = useQuery({
@@ -21,49 +23,49 @@ const ManageRegCamp = () => {
     },
   });
 
-  // Mutation for confirming status
   const confirmMutation = useMutation({
     mutationFn: async (id) => {
-      const res = await axiosSecure.patch(`/payments/${id}/confirm`);
+      const res = await axiosSecure.patch(`/payments/${id}`);
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries("participants");
+      queryClient.invalidateQueries(["participants"]);
+      refetch();
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Update status",
+        title: "Status updated successfully",
         showConfirmButton: false,
         timer: 1500,
       });
     },
     onError: (error) => {
-      console.error("Error confirming status:", error);
+      console.error("Error confirming status:", error.response?.data || error.message);
       Swal.fire({
         position: "top-end",
         icon: "error",
         title: "Error updating status",
+        text: error.response?.data?.message || error.message,
         showConfirmButton: true,
       });
     },
   });
 
-  // Handle confirm button click
   const handleConfirm = (id) => {
+    console.log("Confirming participant ID:", id);
     confirmMutation.mutate(id);
   };
 
-  // Calculate total number of pages
   const totalPages = Math.ceil(participants.length / perPage);
 
-  // Function to handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Calculate the index range for current page
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
+
+
 
   return (
     <div>
@@ -76,7 +78,7 @@ const ManageRegCamp = () => {
             <thead className="bg-sky-400 py-3 text-white uppercase">
               <tr>
                 <th>#</th>
-                <th>Participate Name</th>
+                <th>Participant Name</th>
                 <th>Camp Name</th>
                 <th>Camp Fees</th>
                 <th>Payment Status</th>
@@ -154,6 +156,9 @@ const ManageRegCamp = () => {
       </div>
     </div>
   );
+
+
+
 };
 
 export default ManageRegCamp;
