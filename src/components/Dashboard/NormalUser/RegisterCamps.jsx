@@ -25,7 +25,7 @@ const RegisterCamps = () => {
       console.log("Error fetching participant data:", err);
     },
   });
-
+console.log('participants', data)
   useEffect(() => {
     if (data) {
       const initialPaymentStatus = data.reduce((acc, item) => {
@@ -186,21 +186,52 @@ const RegisterCamps = () => {
                     </button>
                   </td>
                   <td>
+                 {item?.status == 'Paid' ? (
+                   <button
+                   onClick={() => handleDelete(item._id)}
+                   className="btn opacity-50 btn-xs" disabled
+                   >
+                  <FaTrash className="text-red-700" />
+                   </button>
+                 ) : (
                   <button
-                        onClick={() => handleDelete(item._id)}
-                        className="btn  btn-xs"
-                        >
-                       <FaTrash className="text-red-700" />
-                        </button>
+                  onClick={() => handleDelete(item._id)}
+                  className="btn  btn-xs"
+                  >
+                 <FaTrash className="text-red-700" />
+                  </button>
+                 )}
                   
                   </td>
-                  <Link to="/dashboard/review">
+                  <Link to={`/dashboard/review/${item._id}`}>
                     <td>
-                      <h1 className="text-center bg-sky-200 px-3 py-1 mt-6 rounded-xl justify-center">
+                      {item?.status == 'Paid' && item?.confirm == 'Confirmed' ? (
+                        <button className="btn bg-black  text-white mt-4 btn-xs" >
                         FeedBack
-                      </h1>
+                        </button>
+                      ) : (
+                        <span>N/A</span>
+                      )}
                     </td>
                   </Link>
+
+{/* <td>
+  {item?.feedback ? (
+    <span className="text-green-500">Feedback</span>
+  ) : item?.status === 'Paid' && item?.confirm === 'Confirmed' ? (
+    <Link to={`/dashboard/review/${item._id}`}>
+      <button className="btn bg-black text-white mt-4 btn-xs">FeedBack</button>
+    </Link>
+  ) : item?.status === 'Paid' && item?.confirm !== 'Confirmed' ? (
+    <button className="btn bg-black opacity-55 text-white mt-4 btn-xs" disabled>
+      FeedBack
+    </button>
+  ) : (
+    <span className="text-gray-500">N/A</span>
+  )}
+</td> */}
+
+
                 </tr>
               ))
             ) : (

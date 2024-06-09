@@ -96,8 +96,9 @@ const router = createBrowserRouter([
   
         },
         {
-          path:'review',
-          element:<Review></Review>
+          path:'review/:id',
+          element:<Review></Review>,
+          loader: ({ params }) => fetch(`http://localhost:5000/participant/${params.id}`)
         },
 
         // admin route 

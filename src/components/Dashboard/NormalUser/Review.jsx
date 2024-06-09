@@ -3,7 +3,7 @@ import useAuth from "../../../hook/useAuth";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import toast from "react-hot-toast";
 const Review = () => {
@@ -13,6 +13,10 @@ const Review = () => {
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [loading, setLoading] = useState(false);
+
+  const camp = useLoaderData()
+  console.log('camp', camp)
+  // const {camp_id} = camp;
 
   const { mutateAsync } = useMutation({
     mutationFn: async (reviewData) => {
@@ -37,6 +41,9 @@ const Review = () => {
     const rating = form.rating.value;
     const comment = form.comment.value;
     const date = startDate;
+    const camp_id = camp?.camp_id;
+    const participant_id = camp?._id;
+
 
     try {
       const reviewData = {
@@ -44,6 +51,8 @@ const Review = () => {
         rating,
         comment,
         startDate,
+        camp_id,
+        participant_id,
       };
       console.table(reviewData);
 

@@ -20,7 +20,7 @@ const ManageRegCamp = () => {
       return res.data;
     },
   });
-
+  // console.log('filter data', filteredData)
   const confirmMutation = useMutation({
     mutationFn: async (id) => {
       const res = await axiosSecure.patch(`/participant/${id}`);
@@ -179,13 +179,22 @@ const ManageRegCamp = () => {
                       </button>
                     </td>
                     <td>
+                    {/* {item?.confirm == 'Confirmed' && item.status == 'Paid' && ()} */}
+                   {item?.confirm == 'Confirmed' && item?.status == 'Paid' ? (
+                      <button
+                      onClick={() => handleDelete(item._id)}
+                      className="btn opacity-45 btn-xs" disabled
+                      >
+                     <FaTrash className="text-red-700" />
+                      </button>
+                   ) : (
                     <button
-                        onClick={() => handleDelete(item._id)}
-                        className="btn  btn-xs"
-                        >
-                       <FaTrash className="text-red-700" />
-                        </button>
-                      
+                    onClick={() => handleDelete(item._id)}
+                    className="btn  btn-xs"
+                    >
+                   <FaTrash className="text-red-700" />
+                    </button>
+                   )}
                     </td>
                   </tr>
                 ))
