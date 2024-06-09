@@ -85,6 +85,9 @@ const CampDetails = () => {
       camp_id: details._id,
       participantName: user?.displayName,
       participantEmail: user?.email,
+      status:'Unpaid',
+      confirm:'Pending'
+
     };
     console.log(mergedData);
 
@@ -345,25 +348,6 @@ const CampDetails = () => {
                   {errors.emergencyContact && (
                     <p className="text-red-500 text-xs mt-1">
                       {errors.emergencyContact.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700">
-                   Confirm status
-                  </label>
-                  <select
-                    {...register("confirm", { required: "Confirm is required" })}
-                    className="block w-full px-4 py-3 text-sm border border-gray-200 rounded-md"
-                  >
-                    <option value="">Select </option>
-                    <option value="Pending">Pending</option>
-                  
-                  </select>
-                  {errors.confirm && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.confirm.message}
                     </p>
                   )}
                 </div>

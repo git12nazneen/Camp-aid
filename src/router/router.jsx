@@ -24,6 +24,7 @@ import AdminRoute from '../components/AdminRoute';
 import UpdateCamp from '../components/Dashboard/Admin/UpdateCamp';
 import UpdateProfile from '../components/Dashboard/UpdateProfile';
 import Payment from '../components/Dashboard/NormalUser/Payment';
+import Review from '../components/Dashboard/NormalUser/Review';
 
 
 const router = createBrowserRouter([
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
           element: <Payment />,
           loader: ({ params }) => fetch(`http://localhost:5000/participant/${params.id}`)
   
+        },
+        {
+          path:'review',
+          element:<Review></Review>
         },
 
         // admin route 

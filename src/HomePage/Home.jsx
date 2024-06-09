@@ -9,7 +9,7 @@ import {
   AwesomeButtonProgress,
   AwesomeButtonSocial,
 } from "react-awesome-button";
-
+import UserReview from "./UserReview";
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
         </Link>
       </div>
       <HoverDevCards></HoverDevCards>
-    
+      <UserReview></UserReview>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(10); // Number of items per page
-  const [searchQuery, setSearchQuery] = useState(''); // Search query state
+  const [searchQuery, setSearchQuery] = useState(""); // Search query state
 
   const { data: payments = [] } = useQuery({
     queryKey: ["payments", user.email],
@@ -18,19 +18,21 @@ const PaymentHistory = () => {
       return res.data;
     },
   });
-
-
+console.log('itemmmmmm', payments)
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1); // Reset to the first page on search
   };
-  
-  const filteredData = payments.filter((item) =>
-    item.campName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    new Date(item.date).toLocaleString().toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.professional_name.toLowerCase().includes(searchQuery.toLowerCase())
+
+  const filteredData = payments.filter(
+    (item) =>
+      item.campName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      new Date(item.date)
+        .toLocaleString()
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      item.professional_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
 
   // Calculate total number of pages
   const totalPages = Math.ceil(filteredData.length / perPage);
@@ -53,21 +55,21 @@ const PaymentHistory = () => {
         <div>
           <h1 className="bg-black text-white text-center px-5 py-3">Search</h1>
         </div>
-  <input
-    type="text"
-    placeholder="Search by Camp Name, Date, or Healthcare Professional"
-    value={searchQuery}
-    onChange={handleSearch}
-    className="search-input"
-    style={{
-      width: "100%",
-      padding: "10px",
-      marginBottom: "20px",
-      borderRadius: "4px",
-      border: "1px solid #ccc"
-    }}
-  />
-</div>
+        <input
+          type="text"
+          placeholder="Search by Camp Name, Date, or Healthcare Professional"
+          value={searchQuery}
+          onChange={handleSearch}
+          className="search-input"
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginBottom: "20px",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
+          }}
+        />
+      </div>
 
       <div className="mx-20">
         <table className="table my-4">
@@ -80,7 +82,6 @@ const PaymentHistory = () => {
               <th>Camp Fees</th>
               <th>Payment Status</th>
               <th>Confirm Status</th>
-             
             </tr>
           </thead>
           <tbody>
@@ -99,11 +100,16 @@ const PaymentHistory = () => {
                     <h1>{item.price} $</h1>
                   </td>
                   <td>
-                    <h1 className="bg-black px-3 py-1 text-white rounded-xl text-center">{item.status}</h1>
+                    <h1 className="bg-black px-3 py-1 text-white rounded-xl text-center">
+                      {item.status}
+                    </h1>
                   </td>
-                  <td> <h1 className="bg-sky-200 px-3 py-1  rounded-xl text-center">{item.confirm}</h1></td>
-
-                 
+                  <td>
+                    {" "}
+                    <h1 className="bg-sky-200 px-3 py-1  rounded-xl text-center">
+                      {item.confirm}
+                    </h1>
+                  </td>
                 </tr>
               ))
             ) : (

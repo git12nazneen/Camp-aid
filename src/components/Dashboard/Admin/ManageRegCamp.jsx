@@ -11,8 +11,7 @@ const ManageRegCamp = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(10);
   const queryClient = useQueryClient();
-  const [searchQuery, setSearchQuery] = useState(''); // Search query state
-
+  const [searchQuery, setSearchQuery] = useState(""); // Search query state
 
   const { data: filteredData = [], refetch } = useQuery({
     queryKey: ["filteredData"],
@@ -58,17 +57,53 @@ const ManageRegCamp = () => {
     confirmMutation.mutate(id);
   };
 
+
+
+
+  // delete id 
+
+  const handleDelete = (userId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/participant/${userId}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
+
+
+
+
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1); // Reset to the first page on search
   };
-  
-  const filteresData = filteredData.filter((item) =>
-    item.campName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    new Date(item.date).toLocaleString().toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.professional_name.toLowerCase().includes(searchQuery.toLowerCase())
+
+  const filteresData = filteredData.filter(
+    (item) =>
+      item.campName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      new Date(item.date)
+        .toLocaleString()
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      item.professional_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  
 
   const totalPages = Math.ceil(filteresData.length / perPage);
 
@@ -86,24 +121,26 @@ const ManageRegCamp = () => {
           Participant Pay Camps {filteresData.length}
         </h2>
         <div className="mx-20 flex">
-        <div>
-          <h1 className="bg-black text-white text-center px-5 py-3">Search</h1>
+          <div>
+            <h1 className="bg-black text-white text-center px-5 py-3">
+              Search
+            </h1>
+          </div>
+          <input
+            type="text"
+            placeholder="Search by Camp Name, Date, or Healthcare Professional"
+            value={searchQuery}
+            onChange={handleSearch}
+            className="search-input"
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginBottom: "20px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
+          />
         </div>
-  <input
-    type="text"
-    placeholder="Search by Camp Name, Date, or Healthcare Professional"
-    value={searchQuery}
-    onChange={handleSearch}
-    className="search-input"
-    style={{
-      width: "100%",
-      padding: "10px",
-      marginBottom: "20px",
-      borderRadius: "4px",
-      border: "1px solid #ccc"
-    }}
-  />
-</div>
 
         <div className="mx-20">
           <table className="table my-4">
@@ -142,7 +179,13 @@ const ManageRegCamp = () => {
                       </button>
                     </td>
                     <td>
-                      <FaTrash className="text-red-700" />
+                    <button
+                        onClick={() => handleDelete(item._id)}
+                        className="btn  btn-xs"
+                        >
+                       <FaTrash className="text-red-700" />
+                        </button>
+                      
                     </td>
                   </tr>
                 ))
