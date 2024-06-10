@@ -12,7 +12,7 @@ const AvailableCampPage = () => {
   } = useQuery({
     queryKey: ["camps"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/camps");
+      const res = await fetch("http://localhost:8000/camps");
       return res.json();
     },
   });

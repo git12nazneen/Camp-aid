@@ -1,22 +1,28 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { fetchParticipantData } from './participantService';
+import useAuth from '../../../hook/useAuth';
 
 const CampChart = () => {
   const [data, setData] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     const getData = async () => {
-      const result = await fetchParticipantData();
-      const processedData = result.map(item => ({
-        campName: item.campName,
-        price: parseFloat(item.price)
-      }));
-      setData(processedData);
+      if (user && user.email) {
+        const result = await fetchParticipantData(user.email);
+        const processedData = result.map(item => ({
+          campName: item.campName,
+          price: parseFloat(item.price)
+        }));
+        setData(processedData);
+      }
     };
 
     getData();
-  }, []);
+  }, [user]);
 
   return (
     <BarChart

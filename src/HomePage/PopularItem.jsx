@@ -12,17 +12,13 @@ const PopularItem = () => {
   } = useQuery({
     queryKey: ["camps"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/camps");
+      const res = await fetch("http://localhost:8000/camps");
       return res.json();
     },
   });
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
-  //   const campWithMaxGuests = camps.reduce((maxCamp, currentCamp) =>
-  //     currentCamp.guests > maxCamp.guests ? currentCamp : maxCamp
-  //   );
 
   // Sort camps by guests in descending order
   const sortedCamps = camps.slice().sort((a, b) => b.guests - a.guests);

@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path:'/camps/:id',
         element:<CampCard></CampCard>,
-        loader:({params})=>fetch(`http://localhost:5000/camps/${params.id}`)
+        loader:({params})=>fetch(`http://localhost:8000/camps/${params.id}`)
       }
         ,
         {
@@ -92,13 +92,13 @@ const router = createBrowserRouter([
         {
           path: 'payment/:id',
           element: <Payment />,
-          loader: ({ params }) => fetch(`http://localhost:5000/participant/${params.id}`)
+          loader: ({ params }) => fetch(`http://localhost:8000/participant/${params.id}`)
   
         },
         {
           path:'review/:id',
           element:<Review></Review>,
-          loader: ({ params }) => fetch(`http://localhost:5000/participant/${params.id}`)
+          loader: ({ params }) => fetch(`http://localhost:8000/participant/${params.id}`)
         },
 
         // admin route 
@@ -117,7 +117,7 @@ const router = createBrowserRouter([
         {
           path:'updateCamp/:id',
           element:<AdminRoute><UpdateCamp></UpdateCamp></AdminRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/camps/${params.id}`)
+        loader:({params})=>fetch(`http://localhost:8000/camps/${params.id}`)
        
         }
         ,
