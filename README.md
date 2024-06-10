@@ -32,17 +32,18 @@ Features
 
 Usage:
 
-Home Page: 
+
+**Home Page: 
 Features a navbar with logo, home, available camps, and join us buttons. Displays a banner slider, popular camps, and a section to see all camps.
 
-Camp Details: 
+**Camp Details: 
 
 Provides detailed information about each camp, including an option to join the camp.
 
-Organizer Dashboard: 
+**Organizer Dashboard: 
 Allows organizers to manage their profile, add camps, and manage existing camps and registered participants.
 
-Participant Dashboard:
+**Participant Dashboard:
  Allows participants to view their profile, registered camps, payment history, and analytics.
 Development
 
@@ -70,7 +71,8 @@ Server-Side:
 
 
 
-Client-Side
+****Client-Side
+
 Initial setup and project structure.
 Implemented authentication pages (login and registration).
 Added navbar and homepage layout.
@@ -85,15 +87,12 @@ Created participant dashboard with analytics.
 Integrated Stripe for payment processing.
 Implemented search and sort on available camps page.
 Added responsive design for mobile, tablet, and desktop.
-Integrated sweet alerts for notifications.
-Implemented 404 Page.
-Added footer with essential links.
-Enhanced UI with Material Tailwind.
-Finalized client-side validations and error handling.
-Completed testing and bug fixes.
 
 
-Server-Side
+
+******Server-Side
+
+
 Initial setup and project structure.
 Configured MongoDB connection.
 Implemented user authentication with JWT.
@@ -105,6 +104,3 @@ Developed organizer profile management.
 Implemented camp search and sort endpoints.
 Added participant analytics API.
 Secured endpoints with JWT middleware.
-Completed testing and bug fixes.
-Contribution
-Feel free to fork this repository and contribute by submitting pull requests. For major changes, please open an issue first to discuss what you would like to change.

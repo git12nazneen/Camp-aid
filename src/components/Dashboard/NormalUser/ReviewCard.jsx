@@ -21,7 +21,8 @@ const ReviewCard = ({ singleReview }) => {
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
                 </svg>
-                View and manage participant registrations, ensuring smooth check-in and check-out processes.
+               {comment}
+               <h2>Date:  {new Date(startDate).toLocaleDateString()}</h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
