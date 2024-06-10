@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import CampCard from "./CampCard";
+import HeadAvailable from "./HeadAvailable";
 
 const AvailableCampPage = () => {
   const {
@@ -12,7 +13,7 @@ const AvailableCampPage = () => {
   } = useQuery({
     queryKey: ["camps"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/camps");
+      const res = await fetch("https://server-two-sage-80.vercel.app/camps");
       return res.json();
     },
   });
@@ -60,27 +61,13 @@ const AvailableCampPage = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="mx-10 mt-32 mb-10">
-      <div className="flex justify-center text-center">
-        <div className="flex-1">
-          <input
-            type="text"
-            placeholder="Search camps by name"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-300 rounded-md px-4 py-2 mb-4"
-          />
-        </div>
-        <div className="flex-1 justify-center">
-          {/* Layout toggle button */}
-          <button
-            onClick={toggleLayout}
-            className="rounded-xl border-2 border-dashed border-sky-400 bg-white px-6 py-2  uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none"
-          >
-            {isTwoColumns ? "Switch to Three Columns" : "Switch to Two Columns"}
-          </button>
-        </div>
-        <div className="flex-1">
+<div className="mt-16">
+  <HeadAvailable></HeadAvailable>
+    <div className="mx-10 mt-11 mb-10">
+ 
+      <div className="flex flex-col sm:flex-row justify-center text-center space-y-4 sm:space-y-0 sm:space-x-4">
+
+      <div className="flex-1 flex justify-center">
           <div className="mb-4">
             <label className="mr-2">Sort by:</label>
             <select
@@ -94,6 +81,31 @@ const AvailableCampPage = () => {
             </select>
           </div>
         </div>
+
+
+     
+        <div className="flex-1 flex lg:justify-center justify-start">
+         
+          <input
+            type="text"
+            placeholder="Search camps by name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border border-gray-300 rounded-md px-4 py-2 mb-4"
+          />
+        </div>
+        
+        <div className="flex-1 flex lg:justify-center">
+          {/* Layout toggle button */}
+          <button
+            onClick={toggleLayout}
+            className="px-6 py-1 font-medium  bg-sky-300 text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+         
+          >
+            {isTwoColumns ? "Switch to Three Columns" : "Switch to Two Columns"}
+          </button>
+        </div>
+
       </div>
 
       {/* Sorting options */}
@@ -107,6 +119,7 @@ const AvailableCampPage = () => {
           <CampCard key={camp._id} camp={camp}></CampCard>
         ))}
       </div>
+    </div>
     </div>
   );
 };

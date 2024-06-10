@@ -38,7 +38,7 @@ const CampChart = () => {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="price" fill="#8884d8" />
+      <Bar dataKey="price" fill="#87CEEB" />
     </BarChart>
   );
 };

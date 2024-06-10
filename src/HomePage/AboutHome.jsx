@@ -2,14 +2,15 @@ import "../HomePage/css/abouthome.css"; // Import the CSS file
 
 const AboutHome = () => {
   return (
-    <div className="pb-32">
+    <div className="lg:pb-32 pb-2 md:pb-1">
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
             explore and
             <br /> See <span className="text-blue-500">What we do?</span>
           </h1>
-
+          {/* <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3"> */}
+          
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-3 xl:grid-cols-3">
             {/* First Card */}
             <div className="flip-card ">

@@ -21,7 +21,7 @@ const CampDetails = () => {
     const fetchData = async () => {
       console.log(`Fetching camp details for ID: ${id}`);
       try {
-        const response = await fetch(`http://localhost:8000/camps/${id}`);
+        const response = await fetch(`https://server-two-sage-80.vercel.app/camps/${id}`);
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
@@ -63,7 +63,7 @@ const CampDetails = () => {
   });
 
   const updateParticipant = async () => {
-    fetch(`http://localhost:8000/camps/${id}`, {
+    fetch(`https://server-two-sage-80.vercel.app/camps/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

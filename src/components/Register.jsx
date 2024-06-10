@@ -10,6 +10,7 @@ import useAuth from "../hook/useAuth";
 import PageTitle from "./PageTitle";
 import UseAxiosPublic from "../hook/UseAxiosPublic";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
@@ -35,13 +36,14 @@ const Register = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Register success",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      // Swal.fire({
+      //   position: "top-end",
+      //   icon: "success",
+      //   title: "Register success",
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
+      toast.success('Successfully register')
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           // create user entry in the db
@@ -53,13 +55,14 @@ const Register = () => {
             if (res.data.insertedId) {
                 console.log('user added db')
               reset();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Updated profile successFully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              // Swal.fire({
+              //   position: "top-end",
+              //   icon: "success",
+              //   title: "Updated profile successFully",
+              //   showConfirmButton: false,
+              //   timer: 1500,
+              // });
+              toast.success('Successfully register')
               navigate(from, { replace: true });
             }
           });
@@ -144,7 +147,7 @@ const Register = () => {
                   </span>
                 </div>
 
-                <div>
+                {/* <div>
                   <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                     Photo url
                   </label>
@@ -154,6 +157,18 @@ const Register = () => {
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     {...register("photo", { required: true })}
                   />
+                </div> */}
+                <div>
+                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                    Photo URL
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Photo URL"
+                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    {...register("photoURL", { required: true })}
+                  />
+                  {errors.photoURL && <p className="text-red-500">Photo URL is required</p>}
                 </div>
 
                 <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-black capitalize transition-colors duration-300 transform bg-blue-400 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">

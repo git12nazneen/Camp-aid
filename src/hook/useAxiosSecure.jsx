@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 
 
  const axiosSecure = axios.create({
-    baseURL: 'http://localhost:8000'
+    baseURL: 'https://server-two-sage-80.vercel.app'
 })
 
 const useAxiosSecure = () => {

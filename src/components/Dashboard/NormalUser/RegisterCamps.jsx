@@ -204,32 +204,16 @@ console.log('participants', data)
                   
                   </td>
                   <Link to={`/dashboard/review/${item._id}`}>
-                    <td>
+                    <td className="items-center ">
                       {item?.status == 'Paid' && item?.confirm == 'Confirmed' ? (
                         <button className="btn bg-black  text-white mt-4 btn-xs" >
                         FeedBack
                         </button>
                       ) : (
-                        <span>N/A</span>
+                        <span className="text-center ">N/A</span>
                       )}
                     </td>
                   </Link>
-
-{/* <td>
-  {item?.feedback ? (
-    <span className="text-green-500">Feedback</span>
-  ) : item?.status === 'Paid' && item?.confirm === 'Confirmed' ? (
-    <Link to={`/dashboard/review/${item._id}`}>
-      <button className="btn bg-black text-white mt-4 btn-xs">FeedBack</button>
-    </Link>
-  ) : item?.status === 'Paid' && item?.confirm !== 'Confirmed' ? (
-    <button className="btn bg-black opacity-55 text-white mt-4 btn-xs" disabled>
-      FeedBack
-    </button>
-  ) : (
-    <span className="text-gray-500">N/A</span>
-  )}
-</td> */}
 
 
                 </tr>
