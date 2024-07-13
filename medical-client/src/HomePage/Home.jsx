@@ -13,11 +13,13 @@ import UserReview from "./UserReview";
 import Service from "./Service";
 import Blog from "./Blog";
 import Gallery from "./Gallery";
+import Facility from "./Facility";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
+      <Facility></Facility>
       <AboutHome></AboutHome>
       <Gallery></Gallery>
       <PopularItem></PopularItem>
