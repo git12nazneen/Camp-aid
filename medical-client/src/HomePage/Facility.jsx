@@ -7,13 +7,13 @@ const Facility = () => {
   return (
     <div className="mb-60 ">
       <div className="hero " style={{ backgroundImage: `url(${bfImg})` }}>
-        <div className="hero-overlay bg-[#bae6fd] bg-opacity-80 "></div>
+        <div className="hero-overlay bg-[#2490eb] bg-opacity-80 "></div>
 
         <div className="max-w-6xl mx-auto">
           <div className="pt-14">
             <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
                 Our services
-              <br /> What <span className="text-blue-500">Facilities we provide?</span>
+              <br /> What <span className="text-white">Facilities we provide?</span>
             </h1>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 -pb-20 pt-20 -mb-56">

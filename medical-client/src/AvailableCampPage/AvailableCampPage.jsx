@@ -64,7 +64,7 @@ const AvailableCampPage = () => {
       <div className="max-w-6xl mx-auto  mt-11 mb-10">
         <div className="flex flex-col sm:flex-row justify-center mb-10 bg-gray-300 pt-5 rounded-sm text-center space-y-4 sm:space-y-0 sm:space-x-4">
           <div className="flex-1 flex lg:justify-center justify-start">
-            <h2 className="border bg-sky-300 border-gray-300 rounded-md px-3 ml-1 py-2 mb-4">
+            <h2 className="border bg-[#2490eb] border-gray-300 rounded-md px-3 ml-1 py-2 mb-4">
               Search
             </h2>
             <input
@@ -81,7 +81,7 @@ const AvailableCampPage = () => {
               <select
                 value={sortCriteria}
                 onChange={(e) => handleSortChange(e.target.value)}
-                className="px-6 py-2 font-medium bg-sky-300 text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+                className="px-6 py-2 font-medium bg-[#2490eb] text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
               >
                 <option value="mostRegistered">Most Registered</option>
                 <option value="campFees">Camp Fees(less to more)</option>
@@ -93,7 +93,7 @@ const AvailableCampPage = () => {
           <div className="flex-1 flex lg:justify-center pb-4">
             {/* Layout toggle button */}
             <button onClick={toggleLayout}>
-              <p className="px-6 py-2 font-medium bg-sky-300 text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
+              <p className="px-6 py-2 font-medium bg-[#2490eb] text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
                 {isTwoColumns
                   ? "Switch to Three Columns"
                   : "Switch to Two Columns"}

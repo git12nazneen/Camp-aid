@@ -2,13 +2,13 @@ import React from "react";
 
 const Service = () => {
   return (
-    <div className="bg-[#bae6fd] mb-3  lg:pt-14">
+    <div className="bg-[#2490eb] mb-3  lg:pt-14">
     
 
       <div className="pt-5">
             <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
             Services
-              <br /> Explore  <span className="text-blue-500">our main services</span>
+              <br /> Explore  <span className="text-white">our main services</span>
             </h1>
           </div>
 

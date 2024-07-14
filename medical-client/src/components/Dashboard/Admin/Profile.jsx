@@ -18,7 +18,7 @@ const Profile = () => {
       <Helmet>
         <title>Profile</title>
       </Helmet>
-      <div className='bg-white shadow-lg rounded-2xl w-3/5'>
+      <div className='bg-white shadow-lg rounded-2xl w-60 lg:w-3/5'>
         <img
           alt='profile'
           src='https://images.pexels.com/photos/3367931/pexels-photo-3367931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
@@ -36,7 +36,7 @@ const Profile = () => {
           <p className='p-2 uppercase px-4 text-xs text-white bg-blue-400 rounded-full'>
             {isAdmin ? 'Admin' : 'User'}
           </p>
-          <p className='mt-2 text-xl font-medium text-gray-800 '>
+          <p className='mt-2 text-sm lg:text-xl w-56 lg:w-auto mx-auto font-medium text-gray-800 break-words '>
             User Id: {user?.uid}
           </p>
           <div className='w-full p-2 mt-4 rounded-lg'>

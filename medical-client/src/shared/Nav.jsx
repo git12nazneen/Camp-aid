@@ -33,7 +33,7 @@ const Nav = () => {
         className={({ isActive }) =>
           isActive
             ? "text-blue-950 border-b-2 border-blue-950 font-bold"
-            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-white dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
         Home
@@ -44,7 +44,7 @@ const Nav = () => {
         className={({ isActive }) =>
           isActive
             ? "text-blue-950 border-b-2 border-blue-950 font-bold"
-            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-white dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
         Available Camp
@@ -55,27 +55,16 @@ const Nav = () => {
         className={({ isActive }) =>
           isActive
             ? "text-blue-950 border-b-2 border-blue-950 font-bold"
-            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
+            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-white dark:hover:text-blue-400 md:mx-4 md:my-0"
         }
       >
         About us
       </NavLink>
-
-      {/* <NavLink
-        to="/login"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-950 border-b-2 border-blue-950 font-bold"
-            : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-        }
-      >
-        Join us
-      </NavLink> */}
     </>
   );
   return (
     <div className="bg-opacity-60 fixed top-0 left-0 right-0 z-50 shadow-lg">
-      <nav className="relative bg-sky-200 shadow  ">
+      <nav className="relative bg-[#50a6ef] shadow  ">
         <div className="container px-6 mx-auto md:flex md:justify-between md:items-center h-20">
           <div className="flex items-center justify-between">
             <a href="#">
@@ -141,7 +130,7 @@ const Nav = () => {
                       className={({ isActive }) =>
                         isActive
                           ? "text-blue-950 border-b-2 border-blue-950 font-bold"
-                          : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
+                          : "my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-white dark:hover:text-blue-400 md:mx-4 md:my-0"
                       }
                     >
                       <button
