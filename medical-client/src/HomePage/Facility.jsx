@@ -59,7 +59,7 @@ const Facility = () => {
 
               <div class="px-6 py-10 ">
                 <h1 class="text-xl font-normal text-gray-800 dark:text-white">
-                  Neurology
+                 Heart Speacialist
                 </h1>
 
                 <p class="py-2 font-light text-gray-700 dark:text-gray-400">

@@ -1,17 +1,12 @@
-import React from "react";
-
 const Service = () => {
   return (
     <div className="bg-[#2490eb] mb-3  lg:pt-14">
-    
-
       <div className="pt-5">
             <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
             Services
               <br /> Explore  <span className="text-white">our main services</span>
             </h1>
           </div>
-
       <div class="max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-6 md:gap-10">
           <div class="size-full bg-white shadow-lg rounded-lg p-5 dark:bg-neutral-900">
