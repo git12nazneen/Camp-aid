@@ -4,14 +4,14 @@ const Blog = () => {
   return (
     <div className=" bg-gray-100">
       <div class="max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
-        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-          <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
-            Blogs
-          </h2>
-          <p class="mt-1 text-gray-600 dark:text-neutral-400">
-            Read our blogs and stay connected with us.,,
-          </p>
-        </div>
+      
+
+        <div className=" mx-auto text-center mb-10">
+        <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
+        Stay connected
+          <br />   Read our  <span className="text-blue-500"> blogs and  with us.</span>{" "}
+        </h1>
+      </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <a class="group" href="#">

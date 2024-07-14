@@ -27,7 +27,7 @@ const PopularItem = () => {
   const top6Camps = sortedCamps.slice(0, 6);
 
   return (
-    <div className="mx-10 lg:mt-32 mb-10">
+    <div className="mx-10 lg:mt-16 mb-10">
       <div className=" mx-auto text-center mb-10">
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
           Camp with Highest Participants
