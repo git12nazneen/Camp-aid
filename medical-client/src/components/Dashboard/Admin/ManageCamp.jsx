@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { FaEdit, FaTrash } from 'react-icons/fa';

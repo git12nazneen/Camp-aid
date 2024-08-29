@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -25,7 +25,7 @@ const RegisterCamps = () => {
       console.log("Error fetching participant data:", err);
     },
   });
-console.log('participants', data)
+  console.log("participants", data);
   useEffect(() => {
     if (data) {
       const initialPaymentStatus = data.reduce((acc, item) => {
@@ -44,8 +44,7 @@ console.log('participants', data)
     return <div>Error: {error.message}</div>;
   }
 
-
-  // delete id 
+  // delete id
 
   const handleDelete = (userId) => {
     Swal.fire({
@@ -71,9 +70,6 @@ console.log('participants', data)
       }
     });
   };
-
-
-
 
   // Filter participants by logged-in user's email
   const participants = data.filter(
@@ -110,11 +106,11 @@ console.log('participants', data)
 
   return (
     <div className="max-w-5xl mx-auto">
-      <h2 className="text-center my-10 font-bold text-2xl mx-auto ">
+      <h2 className="text-center my-10 font-bold text-2xl mx-auto">
         Participant Register Camps
       </h2>
       <div className="mx-20 flex">
-        <div>
+        <div className="mb-4 md:mb-0 md:mr-4">
           <h1 className="bg-black text-white text-center px-5 py-3">Search</h1>
         </div>
         <input
@@ -122,7 +118,7 @@ console.log('participants', data)
           placeholder="Search by Camp Name, Date, or Healthcare Professional"
           value={searchQuery}
           onChange={handleSearch}
-          className="search-input"
+          className="search-input w-full md:w-auto"
           style={{
             width: "100%",
             padding: "10px",
@@ -133,36 +129,36 @@ console.log('participants', data)
         />
       </div>
 
-      <div className="mx-20">
-        <table className="table my-4">
-          <thead className="bg-sky-400 py-3 text-white uppercase">
+      <div className="mx-4 md:mx-20 overflow-x-auto">
+        <table className="table my-4 w-full">
+          <thead className="bg-sky-400 text-white uppercase">
             <tr>
-              <th>#</th>
-              <th>Participate Name</th>
-              <th>Camp Name</th>
-              <th>Fees</th>
-              <th>Payment Status</th>
-              <th>Confirm Status</th>
-              <th>Cancel</th>
-              <th>Feedback</th>
+              <th className="py-3 px-4">#</th>
+              <th className="py-3 px-4">Participate Name</th>
+              <th className="py-3 px-4">Camp Name</th>
+              <th className="py-3 px-4">Fees</th>
+              <th className="py-3 px-4">Payment Status</th>
+              <th className="py-3 px-4">Confirm Status</th>
+              <th className="py-3 px-4">Cancel</th>
+              <th className="py-3 px-4">Feedback</th>
             </tr>
           </thead>
           <tbody>
             {filteredData.length > 0 ? (
               filteredData.slice(startIndex, endIndex).map((item, idx) => (
-                <tr key={item._id}>
-                  <td>{startIndex + idx + 1}</td>
-                  <td>
+                <tr key={item._id} className="border-t">
+                  <td className="py-3 px-4">{startIndex + idx + 1}</td>
+                  <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
                       {item.participantName}
                     </div>
                   </td>
-                  <td>
+                  <td className="py-3 px-4">
                     <h1>{item.campName}</h1>
                   </td>
-                  <td>{item.price}</td>
-                  <td>
-                    {item?.status == "Paid" ? (
+                  <td className="py-3 px-4">{item.price}</td>
+                  <td className="py-3 px-4">
+                    {item?.status === "Paid" ? (
                       <button className="btn bg-red-500 cursor-not-allowed disabled opacity-50">
                         Paid
                       </button>
@@ -177,7 +173,7 @@ console.log('participants', data)
                       </Link>
                     )}
                   </td>
-                  <td>
+                  <td className="py-3 px-4">
                     <button
                       className="bg-black py-1 text-white text-center px-3 rounded-xl"
                       onClick={() => handleConfirm(item._id)}
@@ -185,42 +181,41 @@ console.log('participants', data)
                       {item.confirm}
                     </button>
                   </td>
-                  <td>
-                 {item?.status == 'Paid' ? (
-                   <button
-                   onClick={() => handleDelete(item._id)}
-                   className="btn opacity-50 btn-xs" disabled
-                   >
-                  <FaTrash className="text-red-700" />
-                   </button>
-                 ) : (
-                  <button
-                  onClick={() => handleDelete(item._id)}
-                  className="btn  btn-xs"
-                  >
-                 <FaTrash className="text-red-700" />
-                  </button>
-                 )}
-                  
+                  <td className="py-3 px-4">
+                    {item?.status === "Paid" ? (
+                      <button
+                        onClick={() => handleDelete(item._id)}
+                        className="btn opacity-50 btn-xs"
+                        disabled
+                      >
+                        <FaTrash className="text-red-700" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleDelete(item._id)}
+                        className="btn btn-xs"
+                      >
+                        <FaTrash className="text-red-700" />
+                      </button>
+                    )}
                   </td>
-                  <Link to={`/dashboard/review/${item._id}`}>
-                    <td className="items-center ">
-                      {item?.status == 'Paid' && item?.confirm == 'Confirmed' ? (
-                        <button className="btn bg-black  text-white mt-4 btn-xs" >
-                        FeedBack
+                  <td className="py-3 px-4 items-center">
+                    {item?.status === "Paid" &&
+                    item?.confirm === "Confirmed" ? (
+                      <Link to={`/dashboard/review/${item._id}`}>
+                        <button className="btn bg-black text-white mt-4 btn-xs">
+                          Feedback
                         </button>
-                      ) : (
-                        <span className="text-center ">N/A</span>
-                      )}
-                    </td>
-                  </Link>
-
-
+                      </Link>
+                    ) : (
+                      <span className="text-center">N/A</span>
+                    )}
+                  </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="text-center">
+                <td colSpan="8" className="text-center py-4">
                   No participant data found
                 </td>
               </tr>

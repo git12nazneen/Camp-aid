@@ -1,6 +1,6 @@
 import React from "react";
 import useAuth from "../../../hook/useAuth";
-import avatar from '../../../../src/assets/avatar.png'
+// import avatar from '../../../../src/assets/avatar.png'
 const ReviewCard = ({ singleReview }) => {
   const { user } = useAuth();
   const { name, rating, comment, startDate } = singleReview;
@@ -21,8 +21,8 @@ const ReviewCard = ({ singleReview }) => {
                   <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
                   <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
                 </svg>
-               {comment}
-               <h2>Date:  {new Date(startDate).toLocaleDateString()}</h2>
+                {comment}
+                <h2>Date: {new Date(startDate).toLocaleDateString()}</h2>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -36,8 +36,8 @@ const ReviewCard = ({ singleReview }) => {
             </div>
             <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-sky-600 text-gray-50">
               {/* <img src="https://source.unsplash.com/50x50/?portrait?1" alt="" className="w-16 h-16 mb-2 -mt-16 bg-center rounded-full bg-gray-500 bg-gray-300" /> */}
-            
-             {/* <img 
+
+              {/* <img 
                 class="rounded-full w-14 h-14"
                 src={avatar}
                 alt=""

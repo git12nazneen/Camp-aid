@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -18,7 +18,7 @@ const UserReview = () => {
             return res.data
         }
     })
-    console.log('reviewwwww', reviews)
+    // console.log('reviewwwww', reviews)
   return (
     <div className=" max-w-5xl mx-auto my-10">
       <div className="overflow-x-hidden">

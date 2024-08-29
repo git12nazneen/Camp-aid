@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAuth from "../../../hook/useAuth";
 import { FaTrash } from "react-icons/fa";
@@ -142,8 +142,8 @@ const ManageRegCamp = () => {
           />
         </div>
 
-        <div className="mx-20">
-          <table className="table my-4">
+        <div className="mx-20 overflow-x-auto">
+          <table className="table my-4 overflow-x-auto">
             <thead className="bg-sky-400 py-3 text-white uppercase">
               <tr>
                 <th>#</th>

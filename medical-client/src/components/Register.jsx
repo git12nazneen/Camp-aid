@@ -12,17 +12,15 @@ import UseAxiosPublic from "../hook/UseAxiosPublic";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
-
 const Register = () => {
-  const axiosPublic = UseAxiosPublic()
-  const {createUser,  updateUserProfile}= useAuth()
+  const axiosPublic = UseAxiosPublic();
+  const { createUser, updateUserProfile } = useAuth();
   const auth = getAuth(app);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log('location in login', location)
+  console.log("location in login", location);
   const from = location.state?.from?.pathname || "/";
   console.log("state in location", location.state);
- 
 
   const {
     register,
@@ -36,14 +34,8 @@ const Register = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      // Swal.fire({
-      //   position: "top-end",
-      //   icon: "success",
-      //   title: "Register success",
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      // });
-      toast.success('Successfully register')
+
+      toast.success("Successfully register");
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           // create user entry in the db
@@ -53,16 +45,10 @@ const Register = () => {
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
-                console.log('user added db')
+              console.log("user added db");
               reset();
-              // Swal.fire({
-              //   position: "top-end",
-              //   icon: "success",
-              //   title: "Updated profile successFully",
-              //   showConfirmButton: false,
-              //   timer: 1500,
-              // });
-              toast.success('Successfully register')
+
+              toast.success("Successfully register");
               navigate(from, { replace: true });
             }
           });
@@ -76,10 +62,9 @@ const Register = () => {
 
   console.log(watch("name"));
 
-
   return (
     <div className="max-w-6xl mx-auto  my-20">
-       <PageTitle title='Register'></PageTitle>
+      <PageTitle title="Register"></PageTitle>
       <section className="bg-white dark:bg-gray-900">
         <div className="flex justify-center">
           <div
@@ -139,7 +124,7 @@ const Register = () => {
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     {...register("password", { required: true })}
                   />
-                   <span
+                  <span
                     className="absolute top-3 right-2"
                     // onClick={() => setShowpassword(!showPassword)}
                   >
@@ -147,17 +132,6 @@ const Register = () => {
                   </span>
                 </div>
 
-                {/* <div>
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                    Photo url
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Photo url"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    {...register("photo", { required: true })}
-                  />
-                </div> */}
                 <div>
                   <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                     Photo URL
@@ -168,7 +142,9 @@ const Register = () => {
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     {...register("photoURL", { required: true })}
                   />
-                  {errors.photoURL && <p className="text-red-500">Photo URL is required</p>}
+                  {errors.photoURL && (
+                    <p className="text-red-500">Photo URL is required</p>
+                  )}
                 </div>
 
                 <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-black capitalize transition-colors duration-300 transform bg-blue-400 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">

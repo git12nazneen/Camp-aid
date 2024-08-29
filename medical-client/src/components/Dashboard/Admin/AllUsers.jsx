@@ -80,8 +80,8 @@ const AllUsers = () => {
             <h2 className="text-3xl font-bold text-sky-500">All users</h2>
           </div>
     
-          <div className="overflow-x-auto">
-            <table className="table">
+          <div className="overflow-x-auto mx-10">
+            <table className="table overflow-x-auto">
               {/* head */}
               <thead>
                 <tr>
@@ -177,6 +177,7 @@ const AllUsers = () => {
             </table>
           </div>
         </div>
+      
       );
   
 };

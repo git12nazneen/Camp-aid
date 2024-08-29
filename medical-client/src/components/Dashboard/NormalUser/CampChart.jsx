@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { fetchParticipantData } from './participantService';
 import useAuth from '../../../hook/useAuth';
